@@ -12,15 +12,15 @@ require_relative 'ruby_gen_cli/ui/console'
 require_relative 'ruby_gen_cli/ui/progress'
 require_relative 'ruby_gen_cli/ui/panels'
 
-# Load agents
-require_relative 'ruby_gen_cli/agents/base_agent'
-require_relative 'ruby_gen_cli/agents/code_generator'
-require_relative 'ruby_gen_cli/agents/chat_assistant'
+# Load agents (commented out until implemented)
+# require_relative 'ruby_gen_cli/agents/base_agent'
+# require_relative 'ruby_gen_cli/agents/code_generator'
+# require_relative 'ruby_gen_cli/agents/chat_assistant'
 
-# Load tools
-require_relative 'ruby_gen_cli/tools/file_operations'
-require_relative 'ruby_gen_cli/tools/project_analyzer'
-require_relative 'ruby_gen_cli/tools/code_analysis'
+# Load tools (commented out until implemented)
+# require_relative 'ruby_gen_cli/tools/file_operations'
+# require_relative 'ruby_gen_cli/tools/project_analyzer'
+# require_relative 'ruby_gen_cli/tools/code_analysis'
 
 # Main module for Ruby Gen CLI
 module RubyGenCli

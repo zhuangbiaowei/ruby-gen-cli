@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
-require 'ruby_rich'
+begin
+  require 'ruby_rich'
+  RUBY_RICH_AVAILABLE = true
+rescue LoadError
+  RUBY_RICH_AVAILABLE = false
+end
 
 module RubyGenCli
   module UI
@@ -276,14 +281,23 @@ module RubyGenCli
       private
 
       def create_panel(content, title: nil, border_style: 'rounded', padding: 1, style: nil)
-        panel_style = @config_manager.get('ui.panel_style', border_style)
-        
-        RubyRich::Panel.new(
-          content,
-          title: title,
-          border_style: panel_style,
-          padding: padding
-        )
+        if RUBY_RICH_AVAILABLE
+          panel_style = @config_manager.get('ui.panel_style', border_style)
+          
+          RubyRich::Panel.new(
+            content,
+            title: title,
+            border_style: panel_style,
+            padding: padding
+          )
+        else
+          # Return simple text representation
+          result = []
+          result << "--- #{title} ---" if title
+          result << content
+          result << "--- End ---"
+          result.join("\n")
+        end
       end
 
       def format_duration(seconds)

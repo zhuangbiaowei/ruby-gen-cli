@@ -1,11 +1,150 @@
 # frozen_string_literal: true
 
-require 'ruby_rich'
+begin
+  require 'ruby_rich'
+  RUBY_RICH_AVAILABLE = true
+rescue LoadError
+  RUBY_RICH_AVAILABLE = false
+  puts "Warning: ruby_rich not available, using basic terminal output"
+end
 
 module RubyGenCli
   module UI
+    # Basic console fallback when RubyRich is not available
+    class BasicConsole
+      attr_reader :config_manager
+      
+      def initialize(config_manager)
+        @config_manager = config_manager
+      end
+      
+      # Compatibility method
+      def rich_console
+        self
+      end
+
+      def print(text, style: nil)
+        STDOUT.print(text)
+      end
+
+      def puts(text, style: nil)
+        STDOUT.puts(text)
+      end
+
+      def success(message)
+        puts("✅ #{message}")
+      end
+
+      def error(message)
+        puts("❌ #{message}")
+      end
+
+      def warning(message)
+        puts("⚠️  #{message}")
+      end
+
+      def info(message)
+        puts("ℹ️  #{message}")
+      end
+
+      def debug(message)
+        return unless @config_manager.get('log_level') == 'debug'
+        puts("🐛 #{message}")
+      end
+
+      def panel(content, title: nil, border_style: 'rounded', padding: 1)
+        puts("\n--- #{title} ---") if title
+        puts(content)
+        puts("--- End ---\n")
+      end
+
+      def table(title, data, headers: nil)
+        puts("\n=== #{title} ===") if title
+        if headers
+          puts(headers.join("\t"))
+          puts("-" * 40)
+        end
+        data.each { |row| puts(row.join("\t")) }
+        puts("\n")
+      end
+
+      def loading(message)
+        puts("⏳ #{message}")
+      end
+
+      def clear
+        system('clear') || system('cls')
+      end
+
+      def ask(question, default: nil)
+        prompt = question
+        prompt += " [#{default}]" if default
+        prompt += ": "
+        print(prompt)
+        input = STDIN.gets.chomp
+        input.empty? && default ? default : input
+      end
+
+      def confirm(question, default: false)
+        default_text = default ? 'Y/n' : 'y/N'
+        answer = ask("#{question} (#{default_text})", default: default ? 'y' : 'n')
+        answer.downcase.start_with?('y')
+      end
+
+      def separator(char: '─', length: 80, style: 'dim')
+        puts(char * length)
+      end
+
+      def header(text, level: 1)
+        case level
+        when 1
+          puts("\n\n#{text}")
+          separator(char: '=')
+        when 2
+          puts("\n#{text}")
+          separator(char: '-')
+        else
+          puts(text)
+        end
+      end
+
+      def json(data, indent: 2)
+        require 'json'
+        puts(JSON.pretty_generate(data, indent: ' ' * indent))
+      end
+
+      def code(content, language: 'text', title: nil)
+        puts("\n--- #{title || "Code (#{language})"} ---")
+        puts(content)
+        puts("--- End Code ---\n")
+      end
+
+      def status(message, &block)
+        print("#{message}... ")
+        if block_given?
+          begin
+            result = yield
+            puts("✅ Done")
+            result
+          rescue StandardError => e
+            puts("❌ Failed: #{e.message}")
+            raise
+          end
+        end
+      end
+    end
+
+    # Console factory - returns appropriate console implementation
+    def self.new_console(config_manager)
+      if RUBY_RICH_AVAILABLE
+        RichConsole.new(config_manager)
+      else
+        BasicConsole.new(config_manager)
+      end
+    end
+
     # Enhanced console interface using RubyRich
-    class Console
+    class RichConsole
       attr_reader :rich_console, :config_manager
 
       def initialize(config_manager)

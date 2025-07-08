@@ -134,11 +134,11 @@ module RubyGenCli
       end
     end
 
-    desc 'config', 'Manage configuration'
-    subcommand 'config', ConfigCommands
+    # desc 'config', 'Manage configuration'
+    # subcommand 'config', ConfigCommands
 
-    desc 'conversation', 'Manage conversations' 
-    subcommand 'conversation', ConversationCommands
+    # desc 'conversation', 'Manage conversations' 
+    # subcommand 'conversation', ConversationCommands
 
     desc 'status', 'Show system status'
     def status
@@ -221,7 +221,7 @@ module RubyGenCli
     end
 
     def setup_ui
-      @console = UI::Console.new(@engine.config)
+      @console = UI.new_console(@engine.config)
       @progress = UI::Progress.new(@engine.config)
       @panels = UI::Panels.new(@engine.config)
     end
@@ -440,12 +440,12 @@ module RubyGenCli
     end
 
     # Subcommand classes would be defined here or in separate files
-    class ConfigCommands < Thor
-      # Configuration management commands
-    end
+    # class ConfigCommands < Thor
+    #   # Configuration management commands
+    # end
 
-    class ConversationCommands < Thor  
-      # Conversation management commands
-    end
+    # class ConversationCommands < Thor  
+    #   # Conversation management commands
+    # end
   end
 end

@@ -6,7 +6,8 @@ require 'pathname'
 module RubyGenCli
   # Processes and manages project context for AI interactions
   class ContextProcessor
-    attr_reader :config_manager, :current_directory, :project_info
+    attr_reader :config_manager, :project_info
+    attr_accessor :current_directory
 
     def initialize(config_manager)
       @config_manager = config_manager

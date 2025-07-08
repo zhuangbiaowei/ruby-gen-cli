@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
-require 'ruby_rich'
+begin
+  require 'ruby_rich'
+  RUBY_RICH_AVAILABLE = true
+rescue LoadError
+  RUBY_RICH_AVAILABLE = false
+end
 
 module RubyGenCli
   module UI
@@ -14,18 +19,30 @@ module RubyGenCli
 
       # Create a progress bar for determinate tasks
       def bar(description, total:, &block)
-        style = @config_manager.get('ui.progress_style', 'bar')
-        
-        progress_bar = RubyRich::ProgressBar.new(
-          description,
-          total: total,
-          style: style
-        )
-        
-        if block_given?
-          progress_bar.with_progress(&block)
+        if RUBY_RICH_AVAILABLE
+          style = @config_manager.get('ui.progress_style', 'bar')
+          
+          progress_bar = RubyRich::ProgressBar.new(
+            description,
+            total: total,
+            style: style
+          )
+          
+          if block_given?
+            progress_bar.with_progress(&block)
+          else
+            progress_bar
+          end
         else
-          progress_bar
+          # Fallback to simple progress
+          puts("#{description} [0/#{total}]")
+          if block_given?
+            (1..total).each do |i|
+              result = yield
+              puts("#{description} [#{i}/#{total}]")
+            end
+            result
+          end
         end
       end
 

@@ -77,11 +77,11 @@ module RubyGenCli
       save_llm_config!
     end
 
-    private
-
     def ensure_config_directory
       FileUtils.mkdir_p(@config_dir) unless Dir.exist?(@config_dir)
     end
+
+    private
 
     def config_file_path
       File.join(@config_dir, CONFIG_FILE)

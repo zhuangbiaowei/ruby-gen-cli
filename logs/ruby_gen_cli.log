@@ -1,0 +1,156 @@
+# Logfile created on 2025-07-08 08:49:16 -0400 by logger.rb/v1.7.0
+I, [2025-07-08T08:49:16.799547 #4599]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T08:49:16.799608 #4599]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:49:16.799696 #4599]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:49:16.799938 #4599]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:49:16.800160 #4599]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:49:16.800312 #4599]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:49:16.800528 #4599]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:49:16.800691 #4599]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:49:16.800911 #4599]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:49:16.803520 #4599]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T08:49:16.803557 #4599]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T08:49:16.803632 #4599]  INFO -- : Calling worker: health_check with params: {:text=>"test"}
+I, [2025-07-08T08:49:16.803662 #4599]  INFO -- : Creating worker instance for: health_check
+I, [2025-07-08T08:49:16.803883 #4599]  INFO -- : Create worker's name is health_check
+I, [2025-07-08T08:49:16.804085 #4599]  INFO -- : Create Conversation
+E, [2025-07-08T08:49:16.804130 #4599] ERROR -- : Error executing worker health_check: wrong number of arguments (given 0, expected 1..3)
+D, [2025-07-08T08:49:16.804164 #4599] DEBUG -- : /home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/worker.rb:16:in `instance_eval'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/worker.rb:16:in `execute'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/engine.rb:118:in `call_worker'
+/home/runner/app/lib/ruby_gen_cli/engine.rb:201:in `test_llm_connection'
+/home/runner/app/lib/ruby_gen_cli/engine.rb:126:in `health_check'
+/home/runner/app/lib/ruby_gen_cli/cli.rb:59:in `block in init'
+/home/runner/app/lib/ruby_gen_cli/ui/progress.rb:172:in `block in installation'
+/home/runner/app/lib/ruby_gen_cli/ui/progress.rb:165:in `each'
+/home/runner/app/lib/ruby_gen_cli/ui/progress.rb:165:in `installation'
+/home/runner/app/lib/ruby_gen_cli/cli.rb:42:in `init'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/thor-1.3.2/lib/thor/command.rb:28:in `run'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/thor-1.3.2/lib/thor/invocation.rb:127:in `invoke_command'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/thor-1.3.2/lib/thor.rb:538:in `dispatch'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/thor-1.3.2/lib/thor/base.rb:584:in `start'
+./exe/ruby_gen_cli:7:in `<main>'
+I, [2025-07-08T08:49:31.424046 #4641]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T08:49:31.424139 #4641]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:49:31.424239 #4641]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:49:31.424275 #4641]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:49:31.424328 #4641]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:49:31.424710 #4641]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:49:31.424752 #4641]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:49:31.424965 #4641]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:49:31.425175 #4641]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:49:31.427784 #4641]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T08:49:31.427831 #4641]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T08:49:36.040071 #4680]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T08:49:36.040147 #4680]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:49:36.040214 #4680]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:49:36.040241 #4680]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:49:36.040274 #4680]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:49:36.040298 #4680]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:49:36.040621 #4680]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:49:36.040814 #4680]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:49:36.041010 #4680]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:49:36.043281 #4680]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T08:49:36.043317 #4680]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T08:49:36.069161 #4680]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T08:49:36.069220 #4680]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:49:36.069296 #4680]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:49:36.069321 #4680]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:49:36.069355 #4680]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:49:36.069597 #4680]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:49:36.069808 #4680]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:49:36.069990 #4680]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:49:36.070192 #4680]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:49:36.071573 #4680]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T08:49:36.071608 #4680]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T08:49:36.071667 #4680]  INFO -- : Calling worker: health_check with params: {:text=>"test"}
+I, [2025-07-08T08:49:36.071684 #4680]  INFO -- : Creating worker instance for: health_check
+I, [2025-07-08T08:49:36.071932 #4680]  INFO -- : Create worker's name is health_check
+I, [2025-07-08T08:49:36.072120 #4680]  INFO -- : Create Conversation
+E, [2025-07-08T08:49:36.072325 #4680] ERROR -- : Error executing worker health_check: wrong number of arguments (given 0, expected 1..3)
+D, [2025-07-08T08:49:36.072369 #4680] DEBUG -- : /home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/worker.rb:16:in `instance_eval'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/worker.rb:16:in `execute'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/engine.rb:118:in `call_worker'
+/home/runner/app/lib/ruby_gen_cli/engine.rb:208:in `test_llm_connection'
+/home/runner/app/lib/ruby_gen_cli/engine.rb:126:in `health_check'
+/home/runner/app/lib/ruby_gen_cli/cli.rb:59:in `block in init'
+/home/runner/app/lib/ruby_gen_cli/ui/progress.rb:172:in `block in installation'
+/home/runner/app/lib/ruby_gen_cli/ui/progress.rb:165:in `each'
+/home/runner/app/lib/ruby_gen_cli/ui/progress.rb:165:in `installation'
+/home/runner/app/lib/ruby_gen_cli/cli.rb:42:in `init'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/thor-1.3.2/lib/thor/command.rb:28:in `run'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/thor-1.3.2/lib/thor/invocation.rb:127:in `invoke_command'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/thor-1.3.2/lib/thor.rb:538:in `dispatch'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/thor-1.3.2/lib/thor/base.rb:584:in `start'
+./exe/ruby_gen_cli:7:in `<main>'
+I, [2025-07-08T08:49:40.300537 #4715]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T08:49:40.300621 #4715]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:49:40.300689 #4715]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:49:40.300717 #4715]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:49:40.300750 #4715]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:49:40.300999 #4715]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:49:40.301247 #4715]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:49:40.301414 #4715]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:49:40.301622 #4715]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:49:40.303657 #4715]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T08:49:40.303695 #4715]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T08:49:44.330872 #4750]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T08:49:44.330951 #4750]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:49:44.331020 #4750]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:49:44.331049 #4750]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:49:44.331081 #4750]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:49:44.331095 #4750]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:49:44.331123 #4750]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:49:44.331382 #4750]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:49:44.331587 #4750]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:49:44.333883 #4750]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T08:49:44.333920 #4750]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T08:49:44.359882 #4750]  INFO -- : Calling worker: health_check with params: {:text=>"test"}
+I, [2025-07-08T08:49:44.359931 #4750]  INFO -- : Creating worker instance for: health_check
+I, [2025-07-08T08:49:44.359954 #4750]  INFO -- : Create worker's name is health_check
+I, [2025-07-08T08:49:44.359997 #4750]  INFO -- : Create Conversation
+E, [2025-07-08T08:49:44.360043 #4750] ERROR -- : Error executing worker health_check: wrong number of arguments (given 0, expected 1..3)
+D, [2025-07-08T08:49:44.360290 #4750] DEBUG -- : /home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/worker.rb:16:in `instance_eval'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/worker.rb:16:in `execute'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/engine.rb:118:in `call_worker'
+/home/runner/app/lib/ruby_gen_cli/engine.rb:208:in `test_llm_connection'
+/home/runner/app/lib/ruby_gen_cli/engine.rb:126:in `health_check'
+/home/runner/app/lib/ruby_gen_cli/cli.rb:145:in `status'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/thor-1.3.2/lib/thor/command.rb:28:in `run'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/thor-1.3.2/lib/thor/invocation.rb:127:in `invoke_command'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/thor-1.3.2/lib/thor.rb:538:in `dispatch'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/thor-1.3.2/lib/thor/base.rb:584:in `start'
+./exe/ruby_gen_cli:7:in `<main>'
+I, [2025-07-08T08:50:06.675829 #4831]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T08:50:06.675907 #4831]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:50:06.675978 #4831]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:50:06.676007 #4831]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:50:06.676049 #4831]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:50:06.676299 #4831]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:50:06.676522 #4831]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:50:06.676785 #4831]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:50:06.676808 #4831]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:50:06.679087 #4831]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T08:50:06.679125 #4831]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T08:50:12.648463 #4867]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T08:50:12.648553 #4867]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:50:12.648632 #4867]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:50:12.648660 #4867]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:50:12.648703 #4867]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:50:12.649127 #4867]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:50:12.649348 #4867]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:50:12.649520 #4867]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:50:12.649800 #4867]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:50:12.652356 #4867]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T08:50:12.652395 #4867]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T08:50:23.990011 #4903]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T08:50:23.990090 #4903]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:50:23.990159 #4903]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:50:23.990185 #4903]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:50:23.990224 #4903]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:50:23.990494 #4903]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:50:23.990770 #4903]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:50:23.990977 #4903]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T08:50:23.991178 #4903]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T08:50:23.993551 #4903]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T08:50:23.993587 #4903]  INFO -- : Started create the SmartPrompt engine.

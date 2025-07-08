@@ -1,7 +1,13 @@
 # frozen_string_literal: true
 
 require 'smart_prompt'
-require 'smart_agent'
+begin
+  require 'smart_agent'
+  SMART_AGENT_AVAILABLE = true
+rescue LoadError
+  SMART_AGENT_AVAILABLE = false
+  puts "Warning: smart_agent not available, some features may be limited"
+end
 require 'logger'
 
 module RubyGenCli
@@ -27,6 +33,7 @@ module RubyGenCli
 
     # Get SmartAgent engine configured with current settings  
     def agent_engine
+      return nil unless SMART_AGENT_AVAILABLE
       @smart_agent_engine ||= SmartAgent::Engine.new(agent_config_path)
     end
 
@@ -58,6 +65,11 @@ module RubyGenCli
 
     # Build and configure an agent
     def build_agent(agent_name, options = {})
+      unless SMART_AGENT_AVAILABLE
+        @logger.warn "SmartAgent not available, returning nil"
+        return nil
+      end
+      
       @logger.debug "Building agent: #{agent_name} with options: #{options}"
       
       begin
@@ -116,10 +128,17 @@ module RubyGenCli
         issues << "LLM connection failed: #{e.message}"
       end
       
-      # Check required directories
+      # Check and create required directories
       %w[templates workers agents tools].each do |dir|
         path = @config_manager.get("paths.#{dir}")
-        issues << "#{dir.capitalize} directory not found: #{path}" unless Dir.exist?(path)
+        unless Dir.exist?(path)
+          begin
+            FileUtils.mkdir_p(path)
+            @logger.info "Created #{dir} directory: #{path}"
+          rescue StandardError => e
+            issues << "Failed to create #{dir} directory: #{e.message}"
+          end
+        end
       end
       
       {
@@ -160,6 +179,8 @@ module RubyGenCli
     end
 
     def setup_smart_agent_engine
+      return unless SMART_AGENT_AVAILABLE
+      
       config_path = agent_config_path
       @smart_agent_engine = SmartAgent::Engine.new(config_path) if File.exist?(config_path)
     rescue StandardError => e
@@ -254,7 +275,7 @@ module RubyGenCli
         <% end %>
         
         Please respond helpfully to the user's message.
-      TEMPLATE  
+      TEMPLATE
     end
 
     def default_chat_worker
