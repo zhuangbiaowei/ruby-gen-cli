@@ -35,7 +35,7 @@ module RubyGenCli
       context = {
         project: @project_info.slice(:name, :type, :git_info),
         working_directory: @current_directory,
-        timestamp: Time.now.iso8601
+        timestamp: Time.now.to_s
       }
       
       if include_files

@@ -5,23 +5,32 @@
 
 SmartPrompt.define_worker :code_generator do
   # Use the default LLM from configuration
-  use config.default_llm || 'SiliconFlow'
+  use 'SiliconFlow'
   
   # Set temperature for code generation (lower for more deterministic output)
   temperature params[:temperature] || 0.3
   
   # System message for code generation
-  sys_msg(
-    template(:code_generation, {
-      language: params[:language] || 'ruby',
-      project_context: params[:context],
-      code_type: params[:type] || 'general'
-    })
-  )
+  language = params[:language] || 'ruby'
+  system_message = "You are an expert #{language} developer specializing in generating high-quality, production-ready code."
+  system_message += "\n\nYour task is to generate clean, readable, and well-structured code following #{language} best practices."
   
-  # User request for code generation
-  user_prompt = build_code_prompt(params)
-  message('user', user_prompt)
+  if params[:context]
+    system_message += "\n\nProject Context: #{params[:context]}"
+  end
+  
+  sys_msg(system_message)
+  
+  # User request for code generation - build prompt inline
+  user_prompt = "Generate #{params[:language] || 'Ruby'} code for: #{params[:description]}"
+  
+  if params[:context]
+    user_prompt += "\n\nProject Context:\n#{params[:context]}"
+  end
+  
+  user_prompt += "\n\nPlease provide:\n1. Clean, well-commented code\n2. Following best practices\n3. Include error handling where appropriate\n4. Add documentation/comments explaining key parts"
+  
+  prompt(user_prompt)
   
   # Send the message and get response
   send_msg
@@ -30,7 +39,7 @@ end
 # Code analysis worker
 SmartPrompt.define_worker :code_analyzer do
   # Use the default LLM from configuration
-  use config.default_llm || 'SiliconFlow'
+  use 'SiliconFlow'
   
   # Set temperature for analysis (balanced for detailed insights)
   temperature params[:temperature] || 0.5
@@ -46,52 +55,7 @@ SmartPrompt.define_worker :code_analyzer do
     "Be specific and actionable in your feedback."
   )
   
-  # Code to analyze
-  analysis_prompt = build_analysis_prompt(params)
-  message('user', analysis_prompt)
-  
-  # Send the message and get response
-  send_msg
-end
-
-# Helper method to build code generation prompt
-def build_code_prompt(params)
-  prompt_parts = []
-  
-  prompt_parts << "Generate #{params[:language] || 'Ruby'} code for: #{params[:description]}"
-  
-  if params[:type]
-    prompt_parts << "Type: #{params[:type]}"
-  end
-  
-  if params[:context]
-    prompt_parts << "\nProject Context:"
-    prompt_parts << params[:context].to_s
-  end
-  
-  if params[:requirements]
-    prompt_parts << "\nSpecific Requirements:"
-    Array(params[:requirements]).each { |req| prompt_parts << "- #{req}" }
-  end
-  
-  if params[:style_preferences]
-    prompt_parts << "\nStyle Preferences:"
-    prompt_parts << params[:style_preferences]
-  end
-  
-  prompt_parts << "\nPlease provide:"
-  prompt_parts << "1. Clean, well-commented code"
-  prompt_parts << "2. Following best practices for #{params[:language] || 'Ruby'}"
-  prompt_parts << "3. Include error handling where appropriate"
-  prompt_parts << "4. Add documentation/comments explaining key parts"
-  
-  prompt_parts.join("\n")
-end
-
-# Helper method to build code analysis prompt
-def build_analysis_prompt(params)
-  prompt_parts = []
-  
+  # Code to analyze - build the prompt inline
   file_type = params[:file_type] || 'unknown'
   language = case file_type
              when '.rb' then 'Ruby'
@@ -103,32 +67,12 @@ def build_analysis_prompt(params)
              else 'Generic'
              end
   
-  prompt_parts << "Analyze the following #{language} code:"
-  prompt_parts << "\n```#{language.downcase}"
-  prompt_parts << params[:content]
-  prompt_parts << "```"
+  analysis_prompt = "Analyze the following #{language} code:\n\n```#{language.downcase}\n#{params[:content]}\n```\n\nProvide comprehensive analysis covering code quality, architecture, performance, and security."
   
-  if params[:analysis_type] == 'security'
-    prompt_parts << "\nFocus on security aspects including:"
-    prompt_parts << "- Potential vulnerabilities"
-    prompt_parts << "- Input validation issues"
-    prompt_parts << "- Authentication/authorization concerns"
-    prompt_parts << "- Data exposure risks"
-  elsif params[:analysis_type] == 'performance'
-    prompt_parts << "\nFocus on performance aspects including:"
-    prompt_parts << "- Algorithmic complexity"
-    prompt_parts << "- Memory usage"
-    prompt_parts << "- Database query optimization"
-    prompt_parts << "- Caching opportunities"
-  else
-    prompt_parts << "\nProvide comprehensive analysis covering:"
-    prompt_parts << "- Code quality and maintainability"
-    prompt_parts << "- Architecture and design patterns"
-    prompt_parts << "- Performance considerations"
-    prompt_parts << "- Security implications"
-    prompt_parts << "- Testing coverage suggestions"
-    prompt_parts << "- Refactoring opportunities"
-  end
+  prompt(analysis_prompt)
   
-  prompt_parts.join("\n")
+  # Send the message and get response
+  send_msg
 end
+
+# Worker definitions completed - helper functions removed as they're now inline

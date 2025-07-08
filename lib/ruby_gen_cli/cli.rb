@@ -130,7 +130,12 @@ module RubyGenCli
         # Analyze single file
         content = File.read(path)
         analysis = analyze_file_content(content, File.extname(path))
-        display_file_analysis(analysis, options[:format])
+        # For now, just display the analysis result
+        if analysis.is_a?(String)
+          @console.puts(analysis)
+        else
+          @console.json(analysis)
+        end
       end
     end
 

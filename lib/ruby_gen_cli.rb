@@ -8,6 +8,7 @@ require_relative 'ruby_gen_cli/conversation'
 require_relative 'ruby_gen_cli/context_processor'
 
 # Load UI components
+require_relative 'ruby_gen_cli/ui'
 require_relative 'ruby_gen_cli/ui/console'
 require_relative 'ruby_gen_cli/ui/progress'
 require_relative 'ruby_gen_cli/ui/panels'

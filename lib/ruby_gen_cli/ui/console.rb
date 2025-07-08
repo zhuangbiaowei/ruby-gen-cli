@@ -1,12 +1,6 @@
 # frozen_string_literal: true
 
-begin
-  require 'ruby_rich'
-  RUBY_RICH_AVAILABLE = true
-rescue LoadError
-  RUBY_RICH_AVAILABLE = false
-  puts "Warning: ruby_rich not available, using basic terminal output"
-end
+# ruby_rich availability is checked in ui.rb
 
 module RubyGenCli
   module UI

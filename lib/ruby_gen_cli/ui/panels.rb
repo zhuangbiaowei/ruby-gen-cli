@@ -1,11 +1,6 @@
 # frozen_string_literal: true
 
-begin
-  require 'ruby_rich'
-  RUBY_RICH_AVAILABLE = true
-rescue LoadError
-  RUBY_RICH_AVAILABLE = false
-end
+# ruby_rich availability is checked in ui.rb
 
 module RubyGenCli
   module UI
@@ -282,14 +277,21 @@ module RubyGenCli
 
       def create_panel(content, title: nil, border_style: 'rounded', padding: 1, style: nil)
         if RUBY_RICH_AVAILABLE
-          panel_style = @config_manager.get('ui.panel_style', border_style)
-          
-          RubyRich::Panel.new(
-            content,
-            title: title,
-            border_style: panel_style,
-            padding: padding
-          )
+          begin
+            # Try to create panel with just content and title
+            if title
+              RubyRich::Panel.new(content, title: title)
+            else
+              RubyRich::Panel.new(content)
+            end
+          rescue ArgumentError => e
+            # If Panel creation fails, fall back to simple text
+            result = []
+            result << "--- #{title} ---" if title
+            result << content
+            result << "--- End ---"
+            result.join("\n")
+          end
         else
           # Return simple text representation
           result = []
