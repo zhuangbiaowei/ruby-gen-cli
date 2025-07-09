@@ -1,0 +1,13 @@
+adapters:
+  mock: MockAdapter
+
+llms:
+  mock_llm:
+    adapter: mock
+    url: "http://localhost"
+    default_model: "mock-model"
+
+default_llm: mock_llm
+template_path: "/home/runner/app/templates"
+worker_path: "/home/runner/app/workers"
+logger_file: "/home/runner/app/logs/ruby_gen_cli.log"

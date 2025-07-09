@@ -1,0 +1,14 @@
+adapters:
+  openai: OpenAIAdapter
+
+llms:
+  test_llm:
+    adapter: openai
+    url: https://api.deepseek.com
+    api_key: "${SILICONFLOW_API_KEY}"
+    default_model: deepseek-chat
+
+default_llm: test_llm
+template_path: "./templates"
+worker_path: "./workers"
+logger_file: "./logs/ruby_gen_cli.log"

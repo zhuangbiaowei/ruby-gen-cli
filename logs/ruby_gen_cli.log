@@ -439,3 +439,449 @@ E, [2025-07-08T09:03:02.983537 #6670] ERROR -- : Unexpected error during OpenAI 
 I, [2025-07-08T09:03:02.983612 #6670]  INFO -- : Successful send a message
 I, [2025-07-08T09:03:02.983638 #6670]  INFO -- : Worker chat executed(stream) successfully
 I, [2025-07-08T09:03:02.983652 #6670]  INFO -- : Worker chat stream response is: {}
+I, [2025-07-08T09:08:09.510505 #7555]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T09:08:09.510587 #7555]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:08:09.510654 #7555]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:08:09.510681 #7555]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:08:09.510715 #7555]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:08:09.510987 #7555]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:08:09.511204 #7555]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:08:09.511381 #7555]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:08:09.511403 #7555]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:08:09.513243 #7555]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T09:08:09.513280 #7555]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T09:08:32.133438 #7584]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T09:08:32.133517 #7584]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:08:32.133584 #7584]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:08:32.133615 #7584]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:08:32.133648 #7584]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:08:32.133908 #7584]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:08:32.134157 #7584]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:08:32.134324 #7584]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:08:32.134345 #7584]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:08:32.136486 #7584]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T09:08:32.136522 #7584]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T09:08:47.529262 #7628]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T09:08:47.529340 #7628]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:08:47.529414 #7628]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:08:47.529447 #7628]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:08:47.529495 #7628]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:08:47.529741 #7628]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:08:47.529958 #7628]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:08:47.530281 #7628]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:08:47.530306 #7628]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:08:47.532422 #7628]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T09:08:47.532458 #7628]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T09:08:47.560143 #7628]  INFO -- : Calling worker: code_analyzer with params: {:content=>"# frozen_string_literal: true\n\nrequire_relative 'ruby_gen_cli/version'\nrequire_relative 'ruby_gen_cli/engine'\nrequire_relative 'ruby_gen_cli/cli'\nrequire_relative 'ruby_gen_cli/config_manager'\nrequire_relative 'ruby_gen_cli/conversation'\nrequire_relative 'ruby_gen_cli/context_processor'\n\n# Load UI components\nrequire_relative 'ruby_gen_cli/ui'\nrequire_relative 'ruby_gen_cli/ui/console'\nrequire_relative 'ruby_gen_cli/ui/progress'\nrequire_relative 'ruby_gen_cli/ui/panels'\n\n# Load agents (commented out until implemented)\n# require_relative 'ruby_gen_cli/agents/base_agent'\n# require_relative 'ruby_gen_cli/agents/code_generator'\n# require_relative 'ruby_gen_cli/agents/chat_assistant'\n\n# Load tools (commented out until implemented)\n# require_relative 'ruby_gen_cli/tools/file_operations'\n# require_relative 'ruby_gen_cli/tools/project_analyzer'\n# require_relative 'ruby_gen_cli/tools/code_analysis'\n\n# Main module for Ruby Gen CLI\nmodule RubyGenCli\n  class Error < StandardError; end\n  class ConfigurationError < Error; end\n  class AgentError < Error; end\n  class ToolError < Error; end\n\n  # Default configuration\n  DEFAULT_CONFIG = {\n    default_llm: 'SiliconFlow',\n    temperature: 0.7,\n    max_tokens: 4000,\n    streaming: true,\n    theme: 'default',\n    log_level: 'info'\n  }.freeze\n\n  class << self\n    attr_accessor :config\n\n    # Initialize the CLI system\n    def configure\n      @config = DEFAULT_CONFIG.dup\n      yield(@config) if block_given?\n      @config.freeze\n    end\n\n    # Get current configuration\n    def configuration\n      @config ||= DEFAULT_CONFIG\n    end\n\n    # Reset configuration to defaults\n    def reset_configuration!\n      @config = DEFAULT_CONFIG.dup\n    end\n  end\nend", :file_type=>".rb", :analysis_type=>"comprehensive"}
+I, [2025-07-08T09:08:47.560197 #7628]  INFO -- : Creating worker instance for: code_analyzer
+I, [2025-07-08T09:08:47.560217 #7628]  INFO -- : Create worker's name is code_analyzer
+I, [2025-07-08T09:08:47.560241 #7628]  INFO -- : Create Conversation
+I, [2025-07-08T09:08:47.560428 #7628]  INFO -- : OpenAIAdapter: Sending request to OpenAI
+I, [2025-07-08T09:08:47.560616 #7628]  INFO -- : OpenAIAdapter: Using model 
+I, [2025-07-08T09:08:47.560681 #7628]  INFO -- : Send parameters is: {:model=>nil, :messages=>[{:role=>"system", :content=>"You are an expert code analyzer. Provide comprehensive analysis including:\n- Code structure and architecture\n- Potential issues and improvements\n- Best practices and recommendations\n- Security considerations\n- Performance optimization opportunities\n\nBe specific and actionable in your feedback."}, {:role=>"user", :content=>"Analyze the following Ruby code:\n\n```ruby\n# frozen_string_literal: true\n\nrequire_relative 'ruby_gen_cli/version'\nrequire_relative 'ruby_gen_cli/engine'\nrequire_relative 'ruby_gen_cli/cli'\nrequire_relative 'ruby_gen_cli/config_manager'\nrequire_relative 'ruby_gen_cli/conversation'\nrequire_relative 'ruby_gen_cli/context_processor'\n\n# Load UI components\nrequire_relative 'ruby_gen_cli/ui'\nrequire_relative 'ruby_gen_cli/ui/console'\nrequire_relative 'ruby_gen_cli/ui/progress'\nrequire_relative 'ruby_gen_cli/ui/panels'\n\n# Load agents (commented out until implemented)\n# require_relative 'ruby_gen_cli/agents/base_agent'\n# require_relative 'ruby_gen_cli/agents/code_generator'\n# require_relative 'ruby_gen_cli/agents/chat_assistant'\n\n# Load tools (commented out until implemented)\n# require_relative 'ruby_gen_cli/tools/file_operations'\n# require_relative 'ruby_gen_cli/tools/project_analyzer'\n# require_relative 'ruby_gen_cli/tools/code_analysis'\n\n# Main module for Ruby Gen CLI\nmodule RubyGenCli\n  class Error < StandardError; end\n  class ConfigurationError < Error; end\n  class AgentError < Error; end\n  class ToolError < Error; end\n\n  # Default configuration\n  DEFAULT_CONFIG = {\n    default_llm: 'SiliconFlow',\n    temperature: 0.7,\n    max_tokens: 4000,\n    streaming: true,\n    theme: 'default',\n    log_level: 'info'\n  }.freeze\n\n  class << self\n    attr_accessor :config\n\n    # Initialize the CLI system\n    def configure\n      @config = DEFAULT_CONFIG.dup\n      yield(@config) if block_given?\n      @config.freeze\n    end\n\n    # Get current configuration\n    def configuration\n      @config ||= DEFAULT_CONFIG\n    end\n\n    # Reset configuration to defaults\n    def reset_configuration!\n      @config = DEFAULT_CONFIG.dup\n    end\n  end\nend\n```\n\nProvide comprehensive analysis covering code quality, architecture, performance, and security."}], :temperature=>0.5}
+E, [2025-07-08T09:08:48.746509 #7628] ERROR -- : Unexpected error during OpenAI request: the server responded with status 401 for POST https://api.siliconflow.cn/v1/chat/completions
+I, [2025-07-08T09:08:48.746583 #7628]  INFO -- : Successful send a message
+I, [2025-07-08T09:08:48.746612 #7628]  INFO -- : Worker code_analyzer executed successfully
+I, [2025-07-08T09:08:48.746630 #7628]  INFO -- : Worker result is: Failed to call LLM after 3 attempts: Unexpected error during OpenAI request: the server responded with status 401 for POST https://api.siliconflow.cn/v1/chat/completions
+I, [2025-07-08T09:09:15.078524 #7668]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T09:09:15.078602 #7668]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:09:15.078668 #7668]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:09:15.078695 #7668]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:09:15.078729 #7668]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:09:15.078989 #7668]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:09:15.079216 #7668]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:09:15.079388 #7668]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:09:15.079603 #7668]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:09:15.081719 #7668]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T09:09:15.081756 #7668]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T09:09:15.108753 #7668]  INFO -- : Calling worker: code_analyzer with params: {:content=>"# frozen_string_literal: true\n\nrequire_relative 'ruby_gen_cli/version'\nrequire_relative 'ruby_gen_cli/engine'\nrequire_relative 'ruby_gen_cli/cli'\nrequire_relative 'ruby_gen_cli/config_manager'\nrequire_relative 'ruby_gen_cli/conversation'\nrequire_relative 'ruby_gen_cli/context_processor'\n\n# Load UI components\nrequire_relative 'ruby_gen_cli/ui'\nrequire_relative 'ruby_gen_cli/ui/console'\nrequire_relative 'ruby_gen_cli/ui/progress'\nrequire_relative 'ruby_gen_cli/ui/panels'\n\n# Load agents (commented out until implemented)\n# require_relative 'ruby_gen_cli/agents/base_agent'\n# require_relative 'ruby_gen_cli/agents/code_generator'\n# require_relative 'ruby_gen_cli/agents/chat_assistant'\n\n# Load tools (commented out until implemented)\n# require_relative 'ruby_gen_cli/tools/file_operations'\n# require_relative 'ruby_gen_cli/tools/project_analyzer'\n# require_relative 'ruby_gen_cli/tools/code_analysis'\n\n# Main module for Ruby Gen CLI\nmodule RubyGenCli\n  class Error < StandardError; end\n  class ConfigurationError < Error; end\n  class AgentError < Error; end\n  class ToolError < Error; end\n\n  # Default configuration\n  DEFAULT_CONFIG = {\n    default_llm: 'SiliconFlow',\n    temperature: 0.7,\n    max_tokens: 4000,\n    streaming: true,\n    theme: 'default',\n    log_level: 'info'\n  }.freeze\n\n  class << self\n    attr_accessor :config\n\n    # Initialize the CLI system\n    def configure\n      @config = DEFAULT_CONFIG.dup\n      yield(@config) if block_given?\n      @config.freeze\n    end\n\n    # Get current configuration\n    def configuration\n      @config ||= DEFAULT_CONFIG\n    end\n\n    # Reset configuration to defaults\n    def reset_configuration!\n      @config = DEFAULT_CONFIG.dup\n    end\n  end\nend", :file_type=>".rb", :analysis_type=>"comprehensive"}
+I, [2025-07-08T09:09:15.108805 #7668]  INFO -- : Creating worker instance for: code_analyzer
+I, [2025-07-08T09:09:15.108826 #7668]  INFO -- : Create worker's name is code_analyzer
+I, [2025-07-08T09:09:15.108850 #7668]  INFO -- : Create Conversation
+I, [2025-07-08T09:09:15.109051 #7668]  INFO -- : OpenAIAdapter: Sending request to OpenAI
+I, [2025-07-08T09:09:15.109169 #7668]  INFO -- : OpenAIAdapter: Using model 
+I, [2025-07-08T09:09:15.109421 #7668]  INFO -- : Send parameters is: {:model=>nil, :messages=>[{:role=>"system", :content=>"You are an expert code analyzer. Provide comprehensive analysis including:\n- Code structure and architecture\n- Potential issues and improvements\n- Best practices and recommendations\n- Security considerations\n- Performance optimization opportunities\n\nBe specific and actionable in your feedback."}, {:role=>"user", :content=>"Analyze the following Ruby code:\n\n```ruby\n# frozen_string_literal: true\n\nrequire_relative 'ruby_gen_cli/version'\nrequire_relative 'ruby_gen_cli/engine'\nrequire_relative 'ruby_gen_cli/cli'\nrequire_relative 'ruby_gen_cli/config_manager'\nrequire_relative 'ruby_gen_cli/conversation'\nrequire_relative 'ruby_gen_cli/context_processor'\n\n# Load UI components\nrequire_relative 'ruby_gen_cli/ui'\nrequire_relative 'ruby_gen_cli/ui/console'\nrequire_relative 'ruby_gen_cli/ui/progress'\nrequire_relative 'ruby_gen_cli/ui/panels'\n\n# Load agents (commented out until implemented)\n# require_relative 'ruby_gen_cli/agents/base_agent'\n# require_relative 'ruby_gen_cli/agents/code_generator'\n# require_relative 'ruby_gen_cli/agents/chat_assistant'\n\n# Load tools (commented out until implemented)\n# require_relative 'ruby_gen_cli/tools/file_operations'\n# require_relative 'ruby_gen_cli/tools/project_analyzer'\n# require_relative 'ruby_gen_cli/tools/code_analysis'\n\n# Main module for Ruby Gen CLI\nmodule RubyGenCli\n  class Error < StandardError; end\n  class ConfigurationError < Error; end\n  class AgentError < Error; end\n  class ToolError < Error; end\n\n  # Default configuration\n  DEFAULT_CONFIG = {\n    default_llm: 'SiliconFlow',\n    temperature: 0.7,\n    max_tokens: 4000,\n    streaming: true,\n    theme: 'default',\n    log_level: 'info'\n  }.freeze\n\n  class << self\n    attr_accessor :config\n\n    # Initialize the CLI system\n    def configure\n      @config = DEFAULT_CONFIG.dup\n      yield(@config) if block_given?\n      @config.freeze\n    end\n\n    # Get current configuration\n    def configuration\n      @config ||= DEFAULT_CONFIG\n    end\n\n    # Reset configuration to defaults\n    def reset_configuration!\n      @config = DEFAULT_CONFIG.dup\n    end\n  end\nend\n```\n\nProvide comprehensive analysis covering code quality, architecture, performance, and security."}], :temperature=>0.5}
+E, [2025-07-08T09:09:16.362450 #7668] ERROR -- : Unexpected error during OpenAI request: the server responded with status 500 for POST https://api.siliconflow.cn/v1/chat/completions
+I, [2025-07-08T09:09:16.362521 #7668]  INFO -- : Successful send a message
+I, [2025-07-08T09:09:16.362554 #7668]  INFO -- : Worker code_analyzer executed successfully
+I, [2025-07-08T09:09:16.362573 #7668]  INFO -- : Worker result is: Failed to call LLM after 3 attempts: Unexpected error during OpenAI request: the server responded with status 500 for POST https://api.siliconflow.cn/v1/chat/completions
+I, [2025-07-08T09:13:27.055306 #7838]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T09:13:27.055381 #7838]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:13:27.055446 #7838]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:13:27.055474 #7838]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:13:27.055506 #7838]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:13:27.055529 #7838]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:13:27.055839 #7838]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:13:27.056051 #7838]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:13:27.056292 #7838]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:13:27.059214 #7838]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T09:13:27.059251 #7838]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T09:13:27.088759 #7838]  INFO -- : Calling worker: chat with params: {:message=>"Hello, can you respond?", :context=>"{:project=>{:name=>\"app\", :type=>\"Ruby\", :git_info=>{:is_repo=>true, :branch=>\"main\", :status=>\"modified\", :remote_url=>\"git@github.com:zhuangbiaowei/ruby-gen-cli.git\", :has_uncommitted=>true}}, :working_directory=>\"/home/runner/app\", :timestamp=>\"2025-07-08 09:13:27 -0400\", :important_files=>{\"Gemfile\"=>\"# frozen_string_literal: true\\n\\nsource 'https://rubygems.org'\\n\\n# Specify Ruby version\\nruby '>= 3.2.0'\\n\\n# Core gem specifications\\ngemspec\\n\\ngroup :development, :test do\\n  gem 'rspec', '~> 3.12'\\n  gem 'rubocop', '~> 1.57'\\n  gem 'rubocop-rspec', '~> 2.25'\\n  gem 'pry', '~> 0.14'\\n  gem 'pry-byebug', '~> 3.10'\\nend\\n\\ngroup :development do\\n  gem 'rake', '~> 13.0'\\n  gem 'yard', '~> 0.9'\\nend\"}, :file_tree=>{\"Gemfile\"=>381, \"Gemfile.lock\"=>3417, \"README.md\"=>12760, \"agents/\"=>{}, \"exe/\"=>{\"ruby_gen_cli\"=>132}, \"lib/\"=>{\"ruby_gen_cli/\"=>{\"cli.rb\"=>14728, \"config_manager.rb\"=>4809, \"context_processor.rb\"=>9621, \"conversation.rb\"=>7370, \"engine.rb\"=>9259, \"ui/\"=>{}, \"ui.rb\"=>359, \"version.rb\"=>97}, \"ruby_gen_cli.rb\"=>1701}, \"logs/\"=>{}, \"ruby_gen_cli.gemspec\"=>2401, \"templates/\"=>{\"chat.erb\"=>177, \"code_generation.erb\"=>2033, \"system_prompt.erb\"=>1410}, \"test_env.sh\"=>38, \"tools/\"=>{}, \"workers/\"=>{\"chat_worker.rb\"=>836, \"code_worker.rb\"=>2790}}}", :with_history=>true}
+I, [2025-07-08T09:13:27.088794 #7838]  INFO -- : Creating worker instance for: chat
+I, [2025-07-08T09:13:27.088812 #7838]  INFO -- : Create worker's name is chat
+I, [2025-07-08T09:13:27.088835 #7838]  INFO -- : Create Conversation
+I, [2025-07-08T09:13:27.089009 #7838]  INFO -- : OpenAIAdapter: Sending request to OpenAI
+I, [2025-07-08T09:13:27.089196 #7838]  INFO -- : OpenAIAdapter: Using model 
+I, [2025-07-08T09:13:27.089259 #7838]  INFO -- : Send parameters is: {:model=>nil, :messages=>[{:role=>"system", :content=>"You are Ruby Gen CLI, an intelligent development assistant built with Ruby.\n\nCurrent context: {:project=>{:name=>\"app\", :type=>\"Ruby\", :git_info=>{:is_repo=>true, :branch=>\"main\", :status=>\"modified\", :remote_url=>\"git@github.com:zhuangbiaowei/ruby-gen-cli.git\", :has_uncommitted=>true}}, :working_directory=>\"/home/runner/app\", :timestamp=>\"2025-07-08 09:13:27 -0400\", :important_files=>{\"Gemfile\"=>\"# frozen_string_literal: true\\n\\nsource 'https://rubygems.org'\\n\\n# Specify Ruby version\\nruby '>= 3.2.0'\\n\\n# Core gem specifications\\ngemspec\\n\\ngroup :development, :test do\\n  gem 'rspec', '~> 3.12'\\n  gem 'rubocop', '~> 1.57'\\n  gem 'rubocop-rspec', '~> 2.25'\\n  gem 'pry', '~> 0.14'\\n  gem 'pry-byebug', '~> 3.10'\\nend\\n\\ngroup :development do\\n  gem 'rake', '~> 13.0'\\n  gem 'yard', '~> 0.9'\\nend\"}, :file_tree=>{\"Gemfile\"=>381, \"Gemfile.lock\"=>3417, \"README.md\"=>12760, \"agents/\"=>{}, \"exe/\"=>{\"ruby_gen_cli\"=>132}, \"lib/\"=>{\"ruby_gen_cli/\"=>{\"cli.rb\"=>14728, \"config_manager.rb\"=>4809, \"context_processor.rb\"=>9621, \"conversation.rb\"=>7370, \"engine.rb\"=>9259, \"ui/\"=>{}, \"ui.rb\"=>359, \"version.rb\"=>97}, \"ruby_gen_cli.rb\"=>1701}, \"logs/\"=>{}, \"ruby_gen_cli.gemspec\"=>2401, \"templates/\"=>{\"chat.erb\"=>177, \"code_generation.erb\"=>2033, \"system_prompt.erb\"=>1410}, \"test_env.sh\"=>38, \"tools/\"=>{}, \"workers/\"=>{\"chat_worker.rb\"=>836, \"code_worker.rb\"=>2790}}}\n\nPlease provide helpful, accurate, and actionable responses."}, {:role=>"user", :content=>"Hello, can you respond?"}], :temperature=>0.7, :stream=>#<Proc:0x00007fc05c94a178 /home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/engine.rb:15>}
+E, [2025-07-08T09:13:27.420036 #7838] ERROR -- : Unexpected error during OpenAI request: the server responded with status 401 for POST https://api.deepseek.com/v1/chat/completions
+I, [2025-07-08T09:13:27.420107 #7838]  INFO -- : Successful send a message
+I, [2025-07-08T09:13:27.420130 #7838]  INFO -- : Worker chat executed(stream) successfully
+I, [2025-07-08T09:13:27.420144 #7838]  INFO -- : Worker chat stream response is: {}
+I, [2025-07-08T09:13:37.518812 #7894]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T09:13:37.518906 #7894]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:13:37.518986 #7894]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:13:37.519014 #7894]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:13:37.519050 #7894]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:13:37.519065 #7894]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:13:37.519410 #7894]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:13:37.519593 #7894]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:13:37.519929 #7894]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:13:37.522269 #7894]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T09:13:37.522309 #7894]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T09:13:37.551400 #7894]  INFO -- : Calling worker: chat with params: {:message=>"Hello, can you respond with a short greeting?", :context=>"{:project=>{:name=>\"app\", :type=>\"Ruby\", :git_info=>{:is_repo=>true, :branch=>\"main\", :status=>\"modified\", :remote_url=>\"git@github.com:zhuangbiaowei/ruby-gen-cli.git\", :has_uncommitted=>true}}, :working_directory=>\"/home/runner/app\", :timestamp=>\"2025-07-08 09:13:37 -0400\", :important_files=>{\"Gemfile\"=>\"# frozen_string_literal: true\\n\\nsource 'https://rubygems.org'\\n\\n# Specify Ruby version\\nruby '>= 3.2.0'\\n\\n# Core gem specifications\\ngemspec\\n\\ngroup :development, :test do\\n  gem 'rspec', '~> 3.12'\\n  gem 'rubocop', '~> 1.57'\\n  gem 'rubocop-rspec', '~> 2.25'\\n  gem 'pry', '~> 0.14'\\n  gem 'pry-byebug', '~> 3.10'\\nend\\n\\ngroup :development do\\n  gem 'rake', '~> 13.0'\\n  gem 'yard', '~> 0.9'\\nend\"}, :file_tree=>{\"Gemfile\"=>381, \"Gemfile.lock\"=>3417, \"README.md\"=>12760, \"agents/\"=>{}, \"exe/\"=>{\"ruby_gen_cli\"=>132}, \"lib/\"=>{\"ruby_gen_cli/\"=>{\"cli.rb\"=>14728, \"config_manager.rb\"=>4809, \"context_processor.rb\"=>9621, \"conversation.rb\"=>7370, \"engine.rb\"=>9259, \"ui/\"=>{}, \"ui.rb\"=>359, \"version.rb\"=>97}, \"ruby_gen_cli.rb\"=>1701}, \"logs/\"=>{}, \"ruby_gen_cli.gemspec\"=>2401, \"templates/\"=>{\"chat.erb\"=>177, \"code_generation.erb\"=>2033, \"system_prompt.erb\"=>1410}, \"test_env.sh\"=>38, \"tools/\"=>{}, \"workers/\"=>{\"chat_worker.rb\"=>836, \"code_worker.rb\"=>2790}}}", :with_history=>true}
+I, [2025-07-08T09:13:37.551439 #7894]  INFO -- : Creating worker instance for: chat
+I, [2025-07-08T09:13:37.551459 #7894]  INFO -- : Create worker's name is chat
+I, [2025-07-08T09:13:37.551487 #7894]  INFO -- : Create Conversation
+I, [2025-07-08T09:13:37.551713 #7894]  INFO -- : OpenAIAdapter: Sending request to OpenAI
+I, [2025-07-08T09:13:37.551802 #7894]  INFO -- : OpenAIAdapter: Using model 
+I, [2025-07-08T09:13:37.552152 #7894]  INFO -- : Send parameters is: {:model=>nil, :messages=>[{:role=>"system", :content=>"You are Ruby Gen CLI, an intelligent development assistant built with Ruby.\n\nCurrent context: {:project=>{:name=>\"app\", :type=>\"Ruby\", :git_info=>{:is_repo=>true, :branch=>\"main\", :status=>\"modified\", :remote_url=>\"git@github.com:zhuangbiaowei/ruby-gen-cli.git\", :has_uncommitted=>true}}, :working_directory=>\"/home/runner/app\", :timestamp=>\"2025-07-08 09:13:37 -0400\", :important_files=>{\"Gemfile\"=>\"# frozen_string_literal: true\\n\\nsource 'https://rubygems.org'\\n\\n# Specify Ruby version\\nruby '>= 3.2.0'\\n\\n# Core gem specifications\\ngemspec\\n\\ngroup :development, :test do\\n  gem 'rspec', '~> 3.12'\\n  gem 'rubocop', '~> 1.57'\\n  gem 'rubocop-rspec', '~> 2.25'\\n  gem 'pry', '~> 0.14'\\n  gem 'pry-byebug', '~> 3.10'\\nend\\n\\ngroup :development do\\n  gem 'rake', '~> 13.0'\\n  gem 'yard', '~> 0.9'\\nend\"}, :file_tree=>{\"Gemfile\"=>381, \"Gemfile.lock\"=>3417, \"README.md\"=>12760, \"agents/\"=>{}, \"exe/\"=>{\"ruby_gen_cli\"=>132}, \"lib/\"=>{\"ruby_gen_cli/\"=>{\"cli.rb\"=>14728, \"config_manager.rb\"=>4809, \"context_processor.rb\"=>9621, \"conversation.rb\"=>7370, \"engine.rb\"=>9259, \"ui/\"=>{}, \"ui.rb\"=>359, \"version.rb\"=>97}, \"ruby_gen_cli.rb\"=>1701}, \"logs/\"=>{}, \"ruby_gen_cli.gemspec\"=>2401, \"templates/\"=>{\"chat.erb\"=>177, \"code_generation.erb\"=>2033, \"system_prompt.erb\"=>1410}, \"test_env.sh\"=>38, \"tools/\"=>{}, \"workers/\"=>{\"chat_worker.rb\"=>836, \"code_worker.rb\"=>2790}}}\n\nPlease provide helpful, accurate, and actionable responses."}, {:role=>"user", :content=>"Hello, can you respond with a short greeting?"}], :temperature=>0.7, :stream=>#<Proc:0x00007fa86d25a1a8 /home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/engine.rb:15>}
+E, [2025-07-08T09:13:37.885010 #7894] ERROR -- : Unexpected error during OpenAI request: the server responded with status 401 for POST https://api.deepseek.com/v1/chat/completions
+I, [2025-07-08T09:13:37.885080 #7894]  INFO -- : Successful send a message
+I, [2025-07-08T09:13:37.885106 #7894]  INFO -- : Worker chat executed(stream) successfully
+I, [2025-07-08T09:13:37.885120 #7894]  INFO -- : Worker chat stream response is: {}
+I, [2025-07-08T09:14:28.014736 #7997]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T09:14:28.014813 #7997]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:14:28.014859 #7997]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:14:28.017209 #7997]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T09:14:28.017245 #7997]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T09:14:28.048500 #7997]  INFO -- : Calling worker: chat with params: {:message=>"What is 2+2?", :context=>"{:project=>{:name=>\"app\", :type=>\"Ruby\", :git_info=>{:is_repo=>true, :branch=>\"main\", :status=>\"modified\", :remote_url=>\"git@github.com:zhuangbiaowei/ruby-gen-cli.git\", :has_uncommitted=>true}}, :working_directory=>\"/home/runner/app\", :timestamp=>\"2025-07-08 09:14:28 -0400\", :important_files=>{\"Gemfile\"=>\"# frozen_string_literal: true\\n\\nsource 'https://rubygems.org'\\n\\n# Specify Ruby version\\nruby '>= 3.2.0'\\n\\n# Core gem specifications\\ngemspec\\n\\ngroup :development, :test do\\n  gem 'rspec', '~> 3.12'\\n  gem 'rubocop', '~> 1.57'\\n  gem 'rubocop-rspec', '~> 2.25'\\n  gem 'pry', '~> 0.14'\\n  gem 'pry-byebug', '~> 3.10'\\nend\\n\\ngroup :development do\\n  gem 'rake', '~> 13.0'\\n  gem 'yard', '~> 0.9'\\nend\"}, :file_tree=>{\"Gemfile\"=>381, \"Gemfile.lock\"=>3417, \"README.md\"=>12760, \"agents/\"=>{}, \"exe/\"=>{\"ruby_gen_cli\"=>132}, \"lib/\"=>{\"ruby_gen_cli/\"=>{\"cli.rb\"=>14728, \"config_manager.rb\"=>4809, \"context_processor.rb\"=>9621, \"conversation.rb\"=>7370, \"engine.rb\"=>9259, \"ui/\"=>{}, \"ui.rb\"=>359, \"version.rb\"=>97}, \"ruby_gen_cli.rb\"=>1701}, \"logs/\"=>{}, \"ruby_gen_cli.gemspec\"=>2401, \"templates/\"=>{\"chat.erb\"=>177, \"code_generation.erb\"=>2033, \"system_prompt.erb\"=>1410}, \"test_env.sh\"=>38, \"test_llm_config.yml\"=>293, \"tools/\"=>{}, \"workers/\"=>{\"chat_worker.rb\"=>836, \"code_worker.rb\"=>2790}}}", :with_history=>true}
+I, [2025-07-08T09:14:28.048546 #7997]  INFO -- : Creating worker instance for: chat
+I, [2025-07-08T09:14:28.048567 #7997]  INFO -- : Create worker's name is chat
+I, [2025-07-08T09:14:28.048596 #7997]  INFO -- : Create Conversation
+I, [2025-07-08T09:14:28.048851 #7997]  INFO -- : OpenAIAdapter: Sending request to OpenAI
+I, [2025-07-08T09:14:28.048922 #7997]  INFO -- : OpenAIAdapter: Using model 
+I, [2025-07-08T09:14:28.049176 #7997]  INFO -- : Send parameters is: {:model=>nil, :messages=>[{:role=>"system", :content=>"You are Ruby Gen CLI, an intelligent development assistant built with Ruby.\n\nCurrent context: {:project=>{:name=>\"app\", :type=>\"Ruby\", :git_info=>{:is_repo=>true, :branch=>\"main\", :status=>\"modified\", :remote_url=>\"git@github.com:zhuangbiaowei/ruby-gen-cli.git\", :has_uncommitted=>true}}, :working_directory=>\"/home/runner/app\", :timestamp=>\"2025-07-08 09:14:28 -0400\", :important_files=>{\"Gemfile\"=>\"# frozen_string_literal: true\\n\\nsource 'https://rubygems.org'\\n\\n# Specify Ruby version\\nruby '>= 3.2.0'\\n\\n# Core gem specifications\\ngemspec\\n\\ngroup :development, :test do\\n  gem 'rspec', '~> 3.12'\\n  gem 'rubocop', '~> 1.57'\\n  gem 'rubocop-rspec', '~> 2.25'\\n  gem 'pry', '~> 0.14'\\n  gem 'pry-byebug', '~> 3.10'\\nend\\n\\ngroup :development do\\n  gem 'rake', '~> 13.0'\\n  gem 'yard', '~> 0.9'\\nend\"}, :file_tree=>{\"Gemfile\"=>381, \"Gemfile.lock\"=>3417, \"README.md\"=>12760, \"agents/\"=>{}, \"exe/\"=>{\"ruby_gen_cli\"=>132}, \"lib/\"=>{\"ruby_gen_cli/\"=>{\"cli.rb\"=>14728, \"config_manager.rb\"=>4809, \"context_processor.rb\"=>9621, \"conversation.rb\"=>7370, \"engine.rb\"=>9259, \"ui/\"=>{}, \"ui.rb\"=>359, \"version.rb\"=>97}, \"ruby_gen_cli.rb\"=>1701}, \"logs/\"=>{}, \"ruby_gen_cli.gemspec\"=>2401, \"templates/\"=>{\"chat.erb\"=>177, \"code_generation.erb\"=>2033, \"system_prompt.erb\"=>1410}, \"test_env.sh\"=>38, \"test_llm_config.yml\"=>293, \"tools/\"=>{}, \"workers/\"=>{\"chat_worker.rb\"=>836, \"code_worker.rb\"=>2790}}}\n\nPlease provide helpful, accurate, and actionable responses."}, {:role=>"user", :content=>"What is 2+2?"}], :temperature=>0.7, :stream=>#<Proc:0x00007fc729580e10 /home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/engine.rb:15>}
+E, [2025-07-08T09:14:28.343198 #7997] ERROR -- : Unexpected error during OpenAI request: the server responded with status 401 for POST https://api.deepseek.com/v1/chat/completions
+I, [2025-07-08T09:14:28.343272 #7997]  INFO -- : Successful send a message
+I, [2025-07-08T09:14:28.343297 #7997]  INFO -- : Worker chat executed(stream) successfully
+I, [2025-07-08T09:14:28.343312 #7997]  INFO -- : Worker chat stream response is: {}
+I, [2025-07-08T09:14:40.179515 #8068]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T09:14:40.179596 #8068]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:14:40.179641 #8068]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:14:40.181489 #8068]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T09:14:40.181528 #8068]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T09:14:47.473099 #8097]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T09:14:47.473194 #8097]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:14:47.473247 #8097]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:14:47.475259 #8097]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T09:14:47.475298 #8097]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T09:14:47.475351 #8097]  INFO -- : Calling worker: chat with params: {:message=>"Hello"}
+I, [2025-07-08T09:14:47.475366 #8097]  INFO -- : Creating worker instance for: chat
+I, [2025-07-08T09:14:47.475380 #8097]  INFO -- : Create worker's name is chat
+I, [2025-07-08T09:14:47.475399 #8097]  INFO -- : Create Conversation
+I, [2025-07-08T09:14:47.475813 #8097]  INFO -- : OpenAIAdapter: Sending request to OpenAI
+I, [2025-07-08T09:14:47.475850 #8097]  INFO -- : OpenAIAdapter: Using model 
+I, [2025-07-08T09:14:47.476074 #8097]  INFO -- : Send parameters is: {:model=>nil, :messages=>[{:role=>"system", :content=>"You are Ruby Gen CLI, an intelligent development assistant built with Ruby.\n\nPlease provide helpful, accurate, and actionable responses."}, {:role=>"user", :content=>"Hello"}], :temperature=>0.7}
+E, [2025-07-08T09:14:47.776933 #8097] ERROR -- : Unexpected error during OpenAI request: the server responded with status 401 for POST https://api.deepseek.com/v1/chat/completions
+I, [2025-07-08T09:14:47.777003 #8097]  INFO -- : Successful send a message
+I, [2025-07-08T09:14:47.777030 #8097]  INFO -- : Worker chat executed successfully
+I, [2025-07-08T09:14:47.777048 #8097]  INFO -- : Worker result is: Failed to call LLM after 3 attempts: Unexpected error during OpenAI request: the server responded with status 401 for POST https://api.deepseek.com/v1/chat/completions
+I, [2025-07-08T09:15:22.492735 #8152]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T09:15:22.492817 #8152]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:15:22.492856 #8152]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:15:22.495644 #8152]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T09:15:22.495683 #8152]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T09:15:22.495733 #8152]  INFO -- : Calling worker: chat with params: {:message=>"Hello, just say Hi back!"}
+I, [2025-07-08T09:15:22.495749 #8152]  INFO -- : Creating worker instance for: chat
+I, [2025-07-08T09:15:22.495763 #8152]  INFO -- : Create worker's name is chat
+I, [2025-07-08T09:15:22.495781 #8152]  INFO -- : Create Conversation
+I, [2025-07-08T09:15:22.495929 #8152]  INFO -- : OpenAIAdapter: Sending request to OpenAI
+I, [2025-07-08T09:15:22.496066 #8152]  INFO -- : OpenAIAdapter: Using model 
+I, [2025-07-08T09:15:22.496293 #8152]  INFO -- : Send parameters is: {:model=>nil, :messages=>[{:role=>"system", :content=>"You are Ruby Gen CLI, an intelligent development assistant built with Ruby.\n\nPlease provide helpful, accurate, and actionable responses."}, {:role=>"user", :content=>"Hello, just say Hi back!"}], :temperature=>0.7}
+E, [2025-07-08T09:15:23.958965 #8152] ERROR -- : Unexpected error during OpenAI request: the server responded with status 500 for POST https://api.siliconflow.cn/v1/chat/completions
+I, [2025-07-08T09:15:23.959035 #8152]  INFO -- : Successful send a message
+I, [2025-07-08T09:15:23.959063 #8152]  INFO -- : Worker chat executed successfully
+I, [2025-07-08T09:15:23.959081 #8152]  INFO -- : Worker result is: Failed to call LLM after 3 attempts: Unexpected error during OpenAI request: the server responded with status 500 for POST https://api.siliconflow.cn/v1/chat/completions
+I, [2025-07-08T09:15:42.195599 #8203]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T09:15:42.195673 #8203]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:15:42.195713 #8203]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:15:42.197816 #8203]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T09:15:42.197852 #8203]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T09:15:42.197900 #8203]  INFO -- : Calling worker: chat with params: {:message=>"Hello!"}
+I, [2025-07-08T09:15:42.197915 #8203]  INFO -- : Creating worker instance for: chat
+I, [2025-07-08T09:15:42.197928 #8203]  INFO -- : Create worker's name is chat
+I, [2025-07-08T09:15:42.197945 #8203]  INFO -- : Create Conversation
+I, [2025-07-08T09:15:42.198312 #8203]  INFO -- : OpenAIAdapter: Sending request to OpenAI
+I, [2025-07-08T09:15:42.198383 #8203]  INFO -- : OpenAIAdapter: Using model 
+I, [2025-07-08T09:15:42.198645 #8203]  INFO -- : Send parameters is: {:model=>nil, :messages=>[{:role=>"system", :content=>"You are Ruby Gen CLI, an intelligent development assistant built with Ruby.\n\nPlease provide helpful, accurate, and actionable responses."}, {:role=>"user", :content=>"Hello!"}], :temperature=>0.7}
+E, [2025-07-08T09:15:43.154125 #8203] ERROR -- : Unexpected error during OpenAI request: the server responded with status 500 for POST https://api.siliconflow.cn/v1/chat/completions
+I, [2025-07-08T09:15:43.154196 #8203]  INFO -- : Successful send a message
+I, [2025-07-08T09:15:43.154224 #8203]  INFO -- : Worker chat executed successfully
+I, [2025-07-08T09:15:43.154242 #8203]  INFO -- : Worker result is: Failed to call LLM after 3 attempts: Unexpected error during OpenAI request: the server responded with status 500 for POST https://api.siliconflow.cn/v1/chat/completions
+I, [2025-07-08T09:16:04.147115 #8254]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T09:16:04.147192 #8254]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:16:04.147238 #8254]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:16:04.149084 #8254]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T09:16:04.149128 #8254]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T09:16:10.657290 #8298]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T09:16:10.657366 #8298]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:16:10.657408 #8298]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:16:10.659379 #8298]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T09:16:10.659415 #8298]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T09:16:17.394766 #8333]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T09:16:17.394864 #8333]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:16:17.394924 #8333]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:16:17.397502 #8333]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T09:16:17.397540 #8333]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T09:16:17.426887 #8333]  INFO -- : Calling worker: chat with params: {:message=>"Hello!"}
+I, [2025-07-08T09:16:17.426922 #8333]  INFO -- : Creating worker instance for: chat
+I, [2025-07-08T09:16:17.426943 #8333]  INFO -- : Create worker's name is chat
+I, [2025-07-08T09:16:17.426967 #8333]  INFO -- : Create Conversation
+I, [2025-07-08T09:16:17.427174 #8333]  INFO -- : OpenAIAdapter: Sending request to OpenAI
+I, [2025-07-08T09:16:17.427432 #8333]  INFO -- : OpenAIAdapter: Using model 
+I, [2025-07-08T09:16:17.427635 #8333]  INFO -- : Send parameters is: {:model=>nil, :messages=>[{:role=>"system", :content=>"You are Ruby Gen CLI, an intelligent development assistant built with Ruby.\n\nPlease provide helpful, accurate, and actionable responses."}, {:role=>"user", :content=>"Hello!"}], :temperature=>0.7}
+E, [2025-07-08T09:16:18.932705 #8333] ERROR -- : Unexpected error during OpenAI request: the server responded with status 500 for POST https://api.siliconflow.cn/v1/chat/completions
+I, [2025-07-08T09:16:18.932797 #8333]  INFO -- : Successful send a message
+I, [2025-07-08T09:16:18.932824 #8333]  INFO -- : Worker chat executed successfully
+I, [2025-07-08T09:16:18.932842 #8333]  INFO -- : Worker result is: Failed to call LLM after 3 attempts: Unexpected error during OpenAI request: the server responded with status 500 for POST https://api.siliconflow.cn/v1/chat/completions
+I, [2025-07-08T09:17:06.260552 #8465]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T09:17:06.260631 #8465]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:17:06.260679 #8465]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:17:06.262697 #8465]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T09:17:06.262735 #8465]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T09:17:06.295360 #8465]  INFO -- : Calling worker: chat with params: {:message=>"What is 2+2? Please be brief.", :context=>"{:project=>{:name=>\"app\", :type=>\"Ruby\", :git_info=>{:is_repo=>true, :branch=>\"main\", :status=>\"modified\", :remote_url=>\"git@github.com:zhuangbiaowei/ruby-gen-cli.git\", :has_uncommitted=>true}}, :working_directory=>\"/home/runner/app\", :timestamp=>\"2025-07-08 09:17:06 -0400\", :important_files=>{\"Gemfile\"=>\"# frozen_string_literal: true\\n\\nsource 'https://rubygems.org'\\n\\n# Specify Ruby version\\nruby '>= 3.2.0'\\n\\n# Core gem specifications\\ngemspec\\n\\ngroup :development, :test do\\n  gem 'rspec', '~> 3.12'\\n  gem 'rubocop', '~> 1.57'\\n  gem 'rubocop-rspec', '~> 2.25'\\n  gem 'pry', '~> 0.14'\\n  gem 'pry-byebug', '~> 3.10'\\nend\\n\\ngroup :development do\\n  gem 'rake', '~> 13.0'\\n  gem 'yard', '~> 0.9'\\nend\"}, :file_tree=>{\"Gemfile\"=>381, \"Gemfile.lock\"=>3417, \"README.md\"=>12760, \"agents/\"=>{}, \"exe/\"=>{\"ruby_gen_cli\"=>132}, \"final_config.yml\"=>361, \"lib/\"=>{\"ruby_gen_cli/\"=>{\"cli.rb\"=>14728, \"config_manager.rb\"=>4809, \"context_processor.rb\"=>9621, \"conversation.rb\"=>7370, \"engine.rb\"=>9259, \"ui/\"=>{}, \"ui.rb\"=>359, \"version.rb\"=>97}, \"ruby_gen_cli.rb\"=>1701}, \"logs/\"=>{}, \"ruby_gen_cli.gemspec\"=>2401, \"simple_test.rb\"=>1145, \"templates/\"=>{\"chat.erb\"=>177, \"code_generation.erb\"=>2033, \"system_prompt.erb\"=>1410}, \"test_env.sh\"=>38, \"test_llm_config.yml\"=>293, \"test_model_config.yml\"=>316, \"test_siliconflow_config.yml\"=>315, \"tools/\"=>{}, \"workers/\"=>{\"chat_worker.rb\"=>839, \"code_worker.rb\"=>2796}}}", :with_history=>true}
+I, [2025-07-08T09:17:06.295401 #8465]  INFO -- : Creating worker instance for: chat
+I, [2025-07-08T09:17:06.295420 #8465]  INFO -- : Create worker's name is chat
+I, [2025-07-08T09:17:06.295447 #8465]  INFO -- : Create Conversation
+I, [2025-07-08T09:17:06.295641 #8465]  INFO -- : OpenAIAdapter: Sending request to OpenAI
+I, [2025-07-08T09:17:06.295779 #8465]  INFO -- : OpenAIAdapter: Using model 
+I, [2025-07-08T09:17:06.296004 #8465]  INFO -- : Send parameters is: {:model=>nil, :messages=>[{:role=>"system", :content=>"You are Ruby Gen CLI, an intelligent development assistant built with Ruby.\n\nCurrent context: {:project=>{:name=>\"app\", :type=>\"Ruby\", :git_info=>{:is_repo=>true, :branch=>\"main\", :status=>\"modified\", :remote_url=>\"git@github.com:zhuangbiaowei/ruby-gen-cli.git\", :has_uncommitted=>true}}, :working_directory=>\"/home/runner/app\", :timestamp=>\"2025-07-08 09:17:06 -0400\", :important_files=>{\"Gemfile\"=>\"# frozen_string_literal: true\\n\\nsource 'https://rubygems.org'\\n\\n# Specify Ruby version\\nruby '>= 3.2.0'\\n\\n# Core gem specifications\\ngemspec\\n\\ngroup :development, :test do\\n  gem 'rspec', '~> 3.12'\\n  gem 'rubocop', '~> 1.57'\\n  gem 'rubocop-rspec', '~> 2.25'\\n  gem 'pry', '~> 0.14'\\n  gem 'pry-byebug', '~> 3.10'\\nend\\n\\ngroup :development do\\n  gem 'rake', '~> 13.0'\\n  gem 'yard', '~> 0.9'\\nend\"}, :file_tree=>{\"Gemfile\"=>381, \"Gemfile.lock\"=>3417, \"README.md\"=>12760, \"agents/\"=>{}, \"exe/\"=>{\"ruby_gen_cli\"=>132}, \"final_config.yml\"=>361, \"lib/\"=>{\"ruby_gen_cli/\"=>{\"cli.rb\"=>14728, \"config_manager.rb\"=>4809, \"context_processor.rb\"=>9621, \"conversation.rb\"=>7370, \"engine.rb\"=>9259, \"ui/\"=>{}, \"ui.rb\"=>359, \"version.rb\"=>97}, \"ruby_gen_cli.rb\"=>1701}, \"logs/\"=>{}, \"ruby_gen_cli.gemspec\"=>2401, \"simple_test.rb\"=>1145, \"templates/\"=>{\"chat.erb\"=>177, \"code_generation.erb\"=>2033, \"system_prompt.erb\"=>1410}, \"test_env.sh\"=>38, \"test_llm_config.yml\"=>293, \"test_model_config.yml\"=>316, \"test_siliconflow_config.yml\"=>315, \"tools/\"=>{}, \"workers/\"=>{\"chat_worker.rb\"=>839, \"code_worker.rb\"=>2796}}}\n\nPlease provide helpful, accurate, and actionable responses."}, {:role=>"user", :content=>"What is 2+2? Please be brief."}], :temperature=>0.7, :stream=>#<Proc:0x00007fc5b9d1b998 /home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/engine.rb:15>}
+E, [2025-07-08T09:17:07.537871 #8465] ERROR -- : Unexpected error during OpenAI request: the server responded with status 500 for POST https://api.siliconflow.cn/v1/chat/completions
+I, [2025-07-08T09:17:07.537941 #8465]  INFO -- : Successful send a message
+I, [2025-07-08T09:17:07.537965 #8465]  INFO -- : Worker chat executed(stream) successfully
+I, [2025-07-08T09:17:07.537979 #8465]  INFO -- : Worker chat stream response is: {}
+I, [2025-07-08T09:17:14.953118 #8503]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T09:17:14.953200 #8503]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:17:14.953241 #8503]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:17:14.955297 #8503]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T09:17:14.955335 #8503]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T09:18:55.584045 #8561]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T09:18:55.584122 #8561]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:18:55.584173 #8561]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:18:55.586041 #8561]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T09:18:55.586078 #8561]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T09:19:10.972531 #8596]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T09:19:10.972613 #8596]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:19:10.972670 #8596]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:19:10.974584 #8596]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T09:19:10.974621 #8596]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T09:19:11.000229 #8596]  INFO -- : Calling worker: code_analyzer with params: {:content=>"# frozen_string_literal: true\n\nrequire_relative 'ruby_gen_cli/version'\nrequire_relative 'ruby_gen_cli/engine'\nrequire_relative 'ruby_gen_cli/cli'\nrequire_relative 'ruby_gen_cli/config_manager'\nrequire_relative 'ruby_gen_cli/conversation'\nrequire_relative 'ruby_gen_cli/context_processor'\n\n# Load UI components\nrequire_relative 'ruby_gen_cli/ui'\nrequire_relative 'ruby_gen_cli/ui/console'\nrequire_relative 'ruby_gen_cli/ui/progress'\nrequire_relative 'ruby_gen_cli/ui/panels'\n\n# Load agents (commented out until implemented)\n# require_relative 'ruby_gen_cli/agents/base_agent'\n# require_relative 'ruby_gen_cli/agents/code_generator'\n# require_relative 'ruby_gen_cli/agents/chat_assistant'\n\n# Load tools (commented out until implemented)\n# require_relative 'ruby_gen_cli/tools/file_operations'\n# require_relative 'ruby_gen_cli/tools/project_analyzer'\n# require_relative 'ruby_gen_cli/tools/code_analysis'\n\n# Main module for Ruby Gen CLI\nmodule RubyGenCli\n  class Error < StandardError; end\n  class ConfigurationError < Error; end\n  class AgentError < Error; end\n  class ToolError < Error; end\n\n  # Default configuration\n  DEFAULT_CONFIG = {\n    default_llm: 'SiliconFlow',\n    temperature: 0.7,\n    max_tokens: 4000,\n    streaming: true,\n    theme: 'default',\n    log_level: 'info'\n  }.freeze\n\n  class << self\n    attr_accessor :config\n\n    # Initialize the CLI system\n    def configure\n      @config = DEFAULT_CONFIG.dup\n      yield(@config) if block_given?\n      @config.freeze\n    end\n\n    # Get current configuration\n    def configuration\n      @config ||= DEFAULT_CONFIG\n    end\n\n    # Reset configuration to defaults\n    def reset_configuration!\n      @config = DEFAULT_CONFIG.dup\n    end\n  end\nend", :file_type=>".rb", :analysis_type=>"comprehensive"}
+I, [2025-07-08T09:19:11.000280 #8596]  INFO -- : Creating worker instance for: code_analyzer
+I, [2025-07-08T09:19:11.000300 #8596]  INFO -- : Create worker's name is code_analyzer
+I, [2025-07-08T09:19:11.000324 #8596]  INFO -- : Create Conversation
+I, [2025-07-08T09:19:11.000520 #8596]  INFO -- : OpenAIAdapter: Sending request to OpenAI
+I, [2025-07-08T09:19:11.000687 #8596]  INFO -- : OpenAIAdapter: Using model 
+I, [2025-07-08T09:19:11.001007 #8596]  INFO -- : Send parameters is: {:model=>nil, :messages=>[{:role=>"system", :content=>"You are an expert code analyzer. Provide comprehensive analysis including:\n- Code structure and architecture\n- Potential issues and improvements\n- Best practices and recommendations\n- Security considerations\n- Performance optimization opportunities\n\nBe specific and actionable in your feedback."}, {:role=>"user", :content=>"Analyze the following Ruby code:\n\n```ruby\n# frozen_string_literal: true\n\nrequire_relative 'ruby_gen_cli/version'\nrequire_relative 'ruby_gen_cli/engine'\nrequire_relative 'ruby_gen_cli/cli'\nrequire_relative 'ruby_gen_cli/config_manager'\nrequire_relative 'ruby_gen_cli/conversation'\nrequire_relative 'ruby_gen_cli/context_processor'\n\n# Load UI components\nrequire_relative 'ruby_gen_cli/ui'\nrequire_relative 'ruby_gen_cli/ui/console'\nrequire_relative 'ruby_gen_cli/ui/progress'\nrequire_relative 'ruby_gen_cli/ui/panels'\n\n# Load agents (commented out until implemented)\n# require_relative 'ruby_gen_cli/agents/base_agent'\n# require_relative 'ruby_gen_cli/agents/code_generator'\n# require_relative 'ruby_gen_cli/agents/chat_assistant'\n\n# Load tools (commented out until implemented)\n# require_relative 'ruby_gen_cli/tools/file_operations'\n# require_relative 'ruby_gen_cli/tools/project_analyzer'\n# require_relative 'ruby_gen_cli/tools/code_analysis'\n\n# Main module for Ruby Gen CLI\nmodule RubyGenCli\n  class Error < StandardError; end\n  class ConfigurationError < Error; end\n  class AgentError < Error; end\n  class ToolError < Error; end\n\n  # Default configuration\n  DEFAULT_CONFIG = {\n    default_llm: 'SiliconFlow',\n    temperature: 0.7,\n    max_tokens: 4000,\n    streaming: true,\n    theme: 'default',\n    log_level: 'info'\n  }.freeze\n\n  class << self\n    attr_accessor :config\n\n    # Initialize the CLI system\n    def configure\n      @config = DEFAULT_CONFIG.dup\n      yield(@config) if block_given?\n      @config.freeze\n    end\n\n    # Get current configuration\n    def configuration\n      @config ||= DEFAULT_CONFIG\n    end\n\n    # Reset configuration to defaults\n    def reset_configuration!\n      @config = DEFAULT_CONFIG.dup\n    end\n  end\nend\n```\n\nProvide comprehensive analysis covering code quality, architecture, performance, and security."}], :temperature=>0.5}
+E, [2025-07-08T09:19:12.369531 #8596] ERROR -- : Unexpected error during OpenAI request: the server responded with status 500 for POST https://api.siliconflow.cn/v1/chat/completions
+I, [2025-07-08T09:19:12.369602 #8596]  INFO -- : Successful send a message
+I, [2025-07-08T09:19:12.369632 #8596]  INFO -- : Worker code_analyzer executed successfully
+I, [2025-07-08T09:19:12.369651 #8596]  INFO -- : Worker result is: Failed to call LLM after 3 attempts: Unexpected error during OpenAI request: the server responded with status 500 for POST https://api.siliconflow.cn/v1/chat/completions
+I, [2025-07-08T09:22:28.615945 #8686]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T09:22:28.616028 #8686]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T09:22:28.616077 #8686]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T09:22:28.618046 #8686]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T09:22:28.618086 #8686]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T22:44:31.797319 #1911]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T22:44:31.797399 #1911]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T22:44:31.797459 #1911]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T22:44:31.799794 #1911]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T22:44:31.799830 #1911]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T22:44:31.831622 #1911]  INFO -- : Calling worker: code_analyzer with params: {:content=>"# frozen_string_literal: true\n\nrequire_relative 'ruby_gen_cli/version'\nrequire_relative 'ruby_gen_cli/engine'\nrequire_relative 'ruby_gen_cli/cli'\nrequire_relative 'ruby_gen_cli/config_manager'\nrequire_relative 'ruby_gen_cli/conversation'\nrequire_relative 'ruby_gen_cli/context_processor'\n\n# Load UI components\nrequire_relative 'ruby_gen_cli/ui'\nrequire_relative 'ruby_gen_cli/ui/console'\nrequire_relative 'ruby_gen_cli/ui/progress'\nrequire_relative 'ruby_gen_cli/ui/panels'\n\n# Load agents (commented out until implemented)\n# require_relative 'ruby_gen_cli/agents/base_agent'\n# require_relative 'ruby_gen_cli/agents/code_generator'\n# require_relative 'ruby_gen_cli/agents/chat_assistant'\n\n# Load tools (commented out until implemented)\n# require_relative 'ruby_gen_cli/tools/file_operations'\n# require_relative 'ruby_gen_cli/tools/project_analyzer'\n# require_relative 'ruby_gen_cli/tools/code_analysis'\n\n# Main module for Ruby Gen CLI\nmodule RubyGenCli\n  class Error < StandardError; end\n  class ConfigurationError < Error; end\n  class AgentError < Error; end\n  class ToolError < Error; end\n\n  # Default configuration\n  DEFAULT_CONFIG = {\n    default_llm: 'SiliconFlow',\n    temperature: 0.7,\n    max_tokens: 4000,\n    streaming: true,\n    theme: 'default',\n    log_level: 'info'\n  }.freeze\n\n  class << self\n    attr_accessor :config\n\n    # Initialize the CLI system\n    def configure\n      @config = DEFAULT_CONFIG.dup\n      yield(@config) if block_given?\n      @config.freeze\n    end\n\n    # Get current configuration\n    def configuration\n      @config ||= DEFAULT_CONFIG\n    end\n\n    # Reset configuration to defaults\n    def reset_configuration!\n      @config = DEFAULT_CONFIG.dup\n    end\n  end\nend", :file_type=>".rb", :analysis_type=>"comprehensive"}
+I, [2025-07-08T22:44:31.831682 #1911]  INFO -- : Creating worker instance for: code_analyzer
+I, [2025-07-08T22:44:31.831705 #1911]  INFO -- : Create worker's name is code_analyzer
+I, [2025-07-08T22:44:31.831729 #1911]  INFO -- : Create Conversation
+I, [2025-07-08T22:44:31.831954 #1911]  INFO -- : OpenAIAdapter: Sending request to OpenAI
+I, [2025-07-08T22:44:31.832063 #1911]  INFO -- : OpenAIAdapter: Using model 
+I, [2025-07-08T22:44:31.832316 #1911]  INFO -- : Send parameters is: {:model=>nil, :messages=>[{:role=>"system", :content=>"You are an expert code analyzer. Provide comprehensive analysis including:\n- Code structure and architecture\n- Potential issues and improvements\n- Best practices and recommendations\n- Security considerations\n- Performance optimization opportunities\n\nBe specific and actionable in your feedback."}, {:role=>"user", :content=>"Analyze the following Ruby code:\n\n```ruby\n# frozen_string_literal: true\n\nrequire_relative 'ruby_gen_cli/version'\nrequire_relative 'ruby_gen_cli/engine'\nrequire_relative 'ruby_gen_cli/cli'\nrequire_relative 'ruby_gen_cli/config_manager'\nrequire_relative 'ruby_gen_cli/conversation'\nrequire_relative 'ruby_gen_cli/context_processor'\n\n# Load UI components\nrequire_relative 'ruby_gen_cli/ui'\nrequire_relative 'ruby_gen_cli/ui/console'\nrequire_relative 'ruby_gen_cli/ui/progress'\nrequire_relative 'ruby_gen_cli/ui/panels'\n\n# Load agents (commented out until implemented)\n# require_relative 'ruby_gen_cli/agents/base_agent'\n# require_relative 'ruby_gen_cli/agents/code_generator'\n# require_relative 'ruby_gen_cli/agents/chat_assistant'\n\n# Load tools (commented out until implemented)\n# require_relative 'ruby_gen_cli/tools/file_operations'\n# require_relative 'ruby_gen_cli/tools/project_analyzer'\n# require_relative 'ruby_gen_cli/tools/code_analysis'\n\n# Main module for Ruby Gen CLI\nmodule RubyGenCli\n  class Error < StandardError; end\n  class ConfigurationError < Error; end\n  class AgentError < Error; end\n  class ToolError < Error; end\n\n  # Default configuration\n  DEFAULT_CONFIG = {\n    default_llm: 'SiliconFlow',\n    temperature: 0.7,\n    max_tokens: 4000,\n    streaming: true,\n    theme: 'default',\n    log_level: 'info'\n  }.freeze\n\n  class << self\n    attr_accessor :config\n\n    # Initialize the CLI system\n    def configure\n      @config = DEFAULT_CONFIG.dup\n      yield(@config) if block_given?\n      @config.freeze\n    end\n\n    # Get current configuration\n    def configuration\n      @config ||= DEFAULT_CONFIG\n    end\n\n    # Reset configuration to defaults\n    def reset_configuration!\n      @config = DEFAULT_CONFIG.dup\n    end\n  end\nend\n```\n\nProvide comprehensive analysis covering code quality, architecture, performance, and security."}], :temperature=>0.5}
+E, [2025-07-08T22:44:33.357753 #1911] ERROR -- : Unexpected error during OpenAI request: the server responded with status 500 for POST https://api.siliconflow.cn/v1/chat/completions
+I, [2025-07-08T22:44:33.357824 #1911]  INFO -- : Successful send a message
+I, [2025-07-08T22:44:33.357856 #1911]  INFO -- : Worker code_analyzer executed successfully
+I, [2025-07-08T22:44:33.357875 #1911]  INFO -- : Worker result is: Failed to call LLM after 3 attempts: Unexpected error during OpenAI request: the server responded with status 500 for POST https://api.siliconflow.cn/v1/chat/completions
+I, [2025-07-08T22:47:20.728060 #2069]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T22:47:20.728405 #2069]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T22:47:20.728451 #2069]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T22:47:20.730452 #2069]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T22:47:20.730488 #2069]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T22:47:20.761600 #2069]  INFO -- : Calling worker: health_check with params: {:text=>"test"}
+I, [2025-07-08T22:47:20.761637 #2069]  INFO -- : Creating worker instance for: health_check
+I, [2025-07-08T22:47:20.761659 #2069]  INFO -- : Create worker's name is health_check
+I, [2025-07-08T22:47:20.761685 #2069]  INFO -- : Create Conversation
+E, [2025-07-08T22:47:20.761732 #2069] ERROR -- : Error executing worker health_check: wrong number of arguments (given 0, expected 1..3)
+D, [2025-07-08T22:47:20.762013 #2069] DEBUG -- : /home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/worker.rb:16:in `instance_eval'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/worker.rb:16:in `execute'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/engine.rb:118:in `call_worker'
+/home/runner/app/lib/ruby_gen_cli/engine.rb:208:in `test_llm_connection'
+/home/runner/app/lib/ruby_gen_cli/engine.rb:126:in `health_check'
+test_initialization.rb:27:in `test_basic_initialization'
+test_initialization.rb:71:in `<main>'
+I, [2025-07-08T22:48:41.574754 #2132]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T22:48:41.574830 #2132]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T22:48:41.574872 #2132]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T22:48:41.577004 #2132]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T22:48:41.577042 #2132]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T22:48:41.638343 #2132]  INFO -- : Calling worker: health_check with params: {:text=>"test"}
+I, [2025-07-08T22:48:41.638426 #2132]  INFO -- : Creating worker instance for: health_check
+I, [2025-07-08T22:48:41.638458 #2132]  INFO -- : Create worker's name is health_check
+I, [2025-07-08T22:48:41.638495 #2132]  INFO -- : Create Conversation
+E, [2025-07-08T22:48:41.638544 #2132] ERROR -- : Error executing worker health_check: wrong number of arguments (given 0, expected 1..3)
+D, [2025-07-08T22:48:41.638758 #2132] DEBUG -- : /home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/worker.rb:16:in `instance_eval'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/worker.rb:16:in `execute'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/engine.rb:118:in `call_worker'
+/home/runner/app/lib/ruby_gen_cli/engine.rb:208:in `test_llm_connection'
+/home/runner/app/lib/ruby_gen_cli/engine.rb:126:in `health_check'
+test_comprehensive.rb:38:in `test_core_functionality'
+test_comprehensive.rb:225:in `block in <main>'
+test_comprehensive.rb:224:in `each'
+test_comprehensive.rb:224:in `<main>'
+I, [2025-07-08T22:50:36.804211 #2231]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T22:50:36.804292 #2231]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T22:50:36.804345 #2231]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T22:50:36.806284 #2231]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T22:50:36.806322 #2231]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T22:50:36.863397 #2231]  INFO -- : Calling worker: health_check with params: {:text=>"test"}
+I, [2025-07-08T22:50:36.863428 #2231]  INFO -- : Creating worker instance for: health_check
+I, [2025-07-08T22:50:36.863446 #2231]  INFO -- : Create worker's name is health_check
+I, [2025-07-08T22:50:36.863472 #2231]  INFO -- : Create Conversation
+E, [2025-07-08T22:50:36.863508 #2231] ERROR -- : Error executing worker health_check: wrong number of arguments (given 0, expected 1..3)
+D, [2025-07-08T22:50:36.863547 #2231] DEBUG -- : /home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/worker.rb:16:in `instance_eval'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/worker.rb:16:in `execute'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/engine.rb:118:in `call_worker'
+/home/runner/app/lib/ruby_gen_cli/engine.rb:208:in `test_llm_connection'
+/home/runner/app/lib/ruby_gen_cli/engine.rb:126:in `health_check'
+test_comprehensive.rb:38:in `test_core_functionality'
+test_comprehensive.rb:229:in `block in <main>'
+test_comprehensive.rb:228:in `each'
+test_comprehensive.rb:228:in `<main>'
+I, [2025-07-08T23:01:43.881758 #2508]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T23:01:43.881847 #2508]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T23:01:43.881902 #2508]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T23:01:43.883939 #2508]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T23:01:43.883980 #2508]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T23:01:43.938842 #2508]  INFO -- : Calling worker: health_check with params: {:text=>"test"}
+I, [2025-07-08T23:01:43.938916 #2508]  INFO -- : Creating worker instance for: health_check
+I, [2025-07-08T23:01:43.938941 #2508]  INFO -- : Create worker's name is health_check
+I, [2025-07-08T23:01:43.938967 #2508]  INFO -- : Create Conversation
+E, [2025-07-08T23:01:43.939022 #2508] ERROR -- : Error executing worker health_check: wrong number of arguments (given 0, expected 1..3)
+D, [2025-07-08T23:01:43.939052 #2508] DEBUG -- : /home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/worker.rb:16:in `instance_eval'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/worker.rb:16:in `execute'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/engine.rb:118:in `call_worker'
+/home/runner/app/lib/ruby_gen_cli/engine.rb:208:in `test_llm_connection'
+/home/runner/app/lib/ruby_gen_cli/engine.rb:126:in `health_check'
+test_comprehensive.rb:38:in `test_core_functionality'
+test_comprehensive.rb:236:in `block in <main>'
+test_comprehensive.rb:235:in `each'
+test_comprehensive.rb:235:in `<main>'
+I, [2025-07-08T23:02:17.323830 #2570]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T23:02:17.323909 #2570]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T23:02:17.323969 #2570]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T23:02:17.325883 #2570]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T23:02:17.325922 #2570]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T23:02:21.372288 #2608]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T23:02:21.372365 #2608]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T23:02:21.372413 #2608]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T23:02:21.374326 #2608]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T23:02:21.374363 #2608]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T23:02:21.400611 #2608]  INFO -- : Calling worker: health_check with params: {:text=>"test"}
+I, [2025-07-08T23:02:21.400656 #2608]  INFO -- : Creating worker instance for: health_check
+I, [2025-07-08T23:02:21.400676 #2608]  INFO -- : Create worker's name is health_check
+I, [2025-07-08T23:02:21.400701 #2608]  INFO -- : Create Conversation
+E, [2025-07-08T23:02:21.400742 #2608] ERROR -- : Error executing worker health_check: wrong number of arguments (given 0, expected 1..3)
+D, [2025-07-08T23:02:21.400774 #2608] DEBUG -- : /home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/worker.rb:16:in `instance_eval'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/worker.rb:16:in `execute'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/engine.rb:118:in `call_worker'
+/home/runner/app/lib/ruby_gen_cli/engine.rb:208:in `test_llm_connection'
+/home/runner/app/lib/ruby_gen_cli/engine.rb:126:in `health_check'
+/home/runner/app/lib/ruby_gen_cli/cli.rb:150:in `status'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/thor-1.3.2/lib/thor/command.rb:28:in `run'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/thor-1.3.2/lib/thor/invocation.rb:127:in `invoke_command'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/thor-1.3.2/lib/thor.rb:538:in `dispatch'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/thor-1.3.2/lib/thor/base.rb:584:in `start'
+exe/ruby_gen_cli:7:in `<main>'
+I, [2025-07-08T23:02:25.176681 #2645]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T23:02:25.176761 #2645]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T23:02:25.176811 #2645]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T23:02:25.178742 #2645]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T23:02:25.178781 #2645]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T23:02:29.163013 #2679]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T23:02:29.163093 #2679]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T23:02:29.163140 #2679]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T23:02:29.165149 #2679]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T23:02:29.165186 #2679]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T23:02:44.105719 #2738]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T23:02:44.105811 #2738]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T23:02:44.105875 #2738]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T23:02:44.108089 #2738]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T23:02:44.108129 #2738]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T23:02:45.685539 #2747]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T23:02:45.685619 #2747]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T23:02:45.685678 #2747]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T23:02:45.687661 #2747]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T23:02:45.687698 #2747]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T23:02:47.270011 #2755]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T23:02:47.270094 #2755]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T23:02:47.270146 #2755]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T23:02:47.272226 #2755]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T23:02:47.272264 #2755]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T23:02:47.300918 #2755]  INFO -- : Calling worker: health_check with params: {:text=>"test"}
+I, [2025-07-08T23:02:47.300952 #2755]  INFO -- : Creating worker instance for: health_check
+I, [2025-07-08T23:02:47.300970 #2755]  INFO -- : Create worker's name is health_check
+I, [2025-07-08T23:02:47.300991 #2755]  INFO -- : Create Conversation
+E, [2025-07-08T23:02:47.301035 #2755] ERROR -- : Error executing worker health_check: wrong number of arguments (given 0, expected 1..3)
+D, [2025-07-08T23:02:47.301063 #2755] DEBUG -- : /home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/worker.rb:16:in `instance_eval'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/worker.rb:16:in `execute'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/smart_prompt-0.3.3/lib/smart_prompt/engine.rb:118:in `call_worker'
+/home/runner/app/lib/ruby_gen_cli/engine.rb:208:in `test_llm_connection'
+/home/runner/app/lib/ruby_gen_cli/engine.rb:126:in `health_check'
+/home/runner/app/lib/ruby_gen_cli/cli.rb:150:in `status'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/thor-1.3.2/lib/thor/command.rb:28:in `run'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/thor-1.3.2/lib/thor/invocation.rb:127:in `invoke_command'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/thor-1.3.2/lib/thor.rb:538:in `dispatch'
+/home/runner/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/thor-1.3.2/lib/thor/base.rb:584:in `start'
+exe/ruby_gen_cli:7:in `<main>'
+I, [2025-07-08T23:02:48.844199 #2763]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T23:02:48.844275 #2763]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T23:02:48.844321 #2763]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T23:02:48.846763 #2763]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T23:02:48.846800 #2763]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T23:04:49.609514 #2822]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T23:04:49.609596 #2822]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T23:04:49.609647 #2822]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T23:04:49.611552 #2822]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T23:04:49.611590 #2822]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T23:04:49.640084 #2822]  INFO -- : Calling worker: code_analyzer with params: {:content=>"# frozen_string_literal: true\n\nrequire_relative 'ruby_gen_cli/version'\nrequire_relative 'ruby_gen_cli/engine'\nrequire_relative 'ruby_gen_cli/cli'\nrequire_relative 'ruby_gen_cli/config_manager'\nrequire_relative 'ruby_gen_cli/conversation'\nrequire_relative 'ruby_gen_cli/context_processor'\n\n# Load UI components\nrequire_relative 'ruby_gen_cli/ui'\nrequire_relative 'ruby_gen_cli/ui/console'\nrequire_relative 'ruby_gen_cli/ui/progress'\nrequire_relative 'ruby_gen_cli/ui/panels'\n\n# Load agents (commented out until implemented)\n# require_relative 'ruby_gen_cli/agents/base_agent'\n# require_relative 'ruby_gen_cli/agents/code_generator'\n# require_relative 'ruby_gen_cli/agents/chat_assistant'\n\n# Load tools (commented out until implemented)\n# require_relative 'ruby_gen_cli/tools/file_operations'\n# require_relative 'ruby_gen_cli/tools/project_analyzer'\n# require_relative 'ruby_gen_cli/tools/code_analysis'\n\n# Main module for Ruby Gen CLI\nmodule RubyGenCli\n  class Error < StandardError; end\n  class ConfigurationError < Error; end\n  class AgentError < Error; end\n  class ToolError < Error; end\n\n  # Default configuration\n  DEFAULT_CONFIG = {\n    default_llm: 'SiliconFlow',\n    temperature: 0.7,\n    max_tokens: 4000,\n    streaming: true,\n    theme: 'default',\n    log_level: 'info'\n  }.freeze\n\n  class << self\n    attr_accessor :config\n\n    # Initialize the CLI system\n    def configure\n      @config = DEFAULT_CONFIG.dup\n      yield(@config) if block_given?\n      @config.freeze\n    end\n\n    # Get current configuration\n    def configuration\n      @config ||= DEFAULT_CONFIG\n    end\n\n    # Reset configuration to defaults\n    def reset_configuration!\n      @config = DEFAULT_CONFIG.dup\n    end\n  end\nend", :file_type=>".rb", :analysis_type=>"comprehensive"}
+I, [2025-07-08T23:04:49.640133 #2822]  INFO -- : Creating worker instance for: code_analyzer
+I, [2025-07-08T23:04:49.640153 #2822]  INFO -- : Create worker's name is code_analyzer
+I, [2025-07-08T23:04:49.640178 #2822]  INFO -- : Create Conversation
+I, [2025-07-08T23:04:49.640383 #2822]  INFO -- : OpenAIAdapter: Sending request to OpenAI
+I, [2025-07-08T23:04:49.640431 #2822]  INFO -- : OpenAIAdapter: Using model 
+I, [2025-07-08T23:04:49.640688 #2822]  INFO -- : Send parameters is: {:model=>nil, :messages=>[{:role=>"system", :content=>"You are an expert code analyzer. Provide comprehensive analysis including:\n- Code structure and architecture\n- Potential issues and improvements\n- Best practices and recommendations\n- Security considerations\n- Performance optimization opportunities\n\nBe specific and actionable in your feedback."}, {:role=>"user", :content=>"Analyze the following Ruby code:\n\n```ruby\n# frozen_string_literal: true\n\nrequire_relative 'ruby_gen_cli/version'\nrequire_relative 'ruby_gen_cli/engine'\nrequire_relative 'ruby_gen_cli/cli'\nrequire_relative 'ruby_gen_cli/config_manager'\nrequire_relative 'ruby_gen_cli/conversation'\nrequire_relative 'ruby_gen_cli/context_processor'\n\n# Load UI components\nrequire_relative 'ruby_gen_cli/ui'\nrequire_relative 'ruby_gen_cli/ui/console'\nrequire_relative 'ruby_gen_cli/ui/progress'\nrequire_relative 'ruby_gen_cli/ui/panels'\n\n# Load agents (commented out until implemented)\n# require_relative 'ruby_gen_cli/agents/base_agent'\n# require_relative 'ruby_gen_cli/agents/code_generator'\n# require_relative 'ruby_gen_cli/agents/chat_assistant'\n\n# Load tools (commented out until implemented)\n# require_relative 'ruby_gen_cli/tools/file_operations'\n# require_relative 'ruby_gen_cli/tools/project_analyzer'\n# require_relative 'ruby_gen_cli/tools/code_analysis'\n\n# Main module for Ruby Gen CLI\nmodule RubyGenCli\n  class Error < StandardError; end\n  class ConfigurationError < Error; end\n  class AgentError < Error; end\n  class ToolError < Error; end\n\n  # Default configuration\n  DEFAULT_CONFIG = {\n    default_llm: 'SiliconFlow',\n    temperature: 0.7,\n    max_tokens: 4000,\n    streaming: true,\n    theme: 'default',\n    log_level: 'info'\n  }.freeze\n\n  class << self\n    attr_accessor :config\n\n    # Initialize the CLI system\n    def configure\n      @config = DEFAULT_CONFIG.dup\n      yield(@config) if block_given?\n      @config.freeze\n    end\n\n    # Get current configuration\n    def configuration\n      @config ||= DEFAULT_CONFIG\n    end\n\n    # Reset configuration to defaults\n    def reset_configuration!\n      @config = DEFAULT_CONFIG.dup\n    end\n  end\nend\n```\n\nProvide comprehensive analysis covering code quality, architecture, performance, and security."}], :temperature=>0.5}
+E, [2025-07-08T23:04:51.148625 #2822] ERROR -- : Unexpected error during OpenAI request: the server responded with status 500 for POST https://api.siliconflow.cn/v1/chat/completions
+I, [2025-07-08T23:04:51.148695 #2822]  INFO -- : Successful send a message
+I, [2025-07-08T23:04:51.148723 #2822]  INFO -- : Worker code_analyzer executed successfully
+I, [2025-07-08T23:04:51.148741 #2822]  INFO -- : Worker result is: Failed to call LLM after 3 attempts: Unexpected error during OpenAI request: the server responded with status 500 for POST https://api.siliconflow.cn/v1/chat/completions
+I, [2025-07-08T23:12:31.219941 #3006]  INFO -- : Loading configuration from file: /home/runner/.ruby_gen_cli/llm_config.yml
+I, [2025-07-08T23:12:31.220023 #3006]  INFO -- : Start create the SmartPrompt LLMAdapter.
+I, [2025-07-08T23:12:31.220072 #3006]  INFO -- : Successful creation an OpenAI client.
+I, [2025-07-08T23:12:31.221960 #3006]  INFO -- : Configuration loaded successfully
+I, [2025-07-08T23:12:31.221998 #3006]  INFO -- : Started create the SmartPrompt engine.
+I, [2025-07-08T23:12:31.253867 #3006]  INFO -- : Calling worker: code_analyzer with params: {:content=>"# frozen_string_literal: true\n\nrequire_relative 'ruby_gen_cli/version'\nrequire_relative 'ruby_gen_cli/engine'\nrequire_relative 'ruby_gen_cli/cli'\nrequire_relative 'ruby_gen_cli/config_manager'\nrequire_relative 'ruby_gen_cli/conversation'\nrequire_relative 'ruby_gen_cli/context_processor'\n\n# Load UI components\nrequire_relative 'ruby_gen_cli/ui'\nrequire_relative 'ruby_gen_cli/ui/console'\nrequire_relative 'ruby_gen_cli/ui/progress'\nrequire_relative 'ruby_gen_cli/ui/panels'\n\n# Load agents (commented out until implemented)\n# require_relative 'ruby_gen_cli/agents/base_agent'\n# require_relative 'ruby_gen_cli/agents/code_generator'\n# require_relative 'ruby_gen_cli/agents/chat_assistant'\n\n# Load tools (commented out until implemented)\n# require_relative 'ruby_gen_cli/tools/file_operations'\n# require_relative 'ruby_gen_cli/tools/project_analyzer'\n# require_relative 'ruby_gen_cli/tools/code_analysis'\n\n# Main module for Ruby Gen CLI\nmodule RubyGenCli\n  class Error < StandardError; end\n  class ConfigurationError < Error; end\n  class AgentError < Error; end\n  class ToolError < Error; end\n\n  # Default configuration\n  DEFAULT_CONFIG = {\n    default_llm: 'SiliconFlow',\n    temperature: 0.7,\n    max_tokens: 4000,\n    streaming: true,\n    theme: 'default',\n    log_level: 'info'\n  }.freeze\n\n  class << self\n    attr_accessor :config\n\n    # Initialize the CLI system\n    def configure\n      @config = DEFAULT_CONFIG.dup\n      yield(@config) if block_given?\n      @config.freeze\n    end\n\n    # Get current configuration\n    def configuration\n      @config ||= DEFAULT_CONFIG\n    end\n\n    # Reset configuration to defaults\n    def reset_configuration!\n      @config = DEFAULT_CONFIG.dup\n    end\n  end\nend", :file_type=>".rb", :analysis_type=>"comprehensive"}
+I, [2025-07-08T23:12:31.253921 #3006]  INFO -- : Creating worker instance for: code_analyzer
+I, [2025-07-08T23:12:31.253942 #3006]  INFO -- : Create worker's name is code_analyzer
+I, [2025-07-08T23:12:31.253965 #3006]  INFO -- : Create Conversation
+I, [2025-07-08T23:12:31.254159 #3006]  INFO -- : OpenAIAdapter: Sending request to OpenAI
+I, [2025-07-08T23:12:31.254370 #3006]  INFO -- : OpenAIAdapter: Using model 
+I, [2025-07-08T23:12:31.254662 #3006]  INFO -- : Send parameters is: {:model=>nil, :messages=>[{:role=>"system", :content=>"You are an expert code analyzer. Provide comprehensive analysis including:\n- Code structure and architecture\n- Potential issues and improvements\n- Best practices and recommendations\n- Security considerations\n- Performance optimization opportunities\n\nBe specific and actionable in your feedback."}, {:role=>"user", :content=>"Analyze the following Ruby code:\n\n```ruby\n# frozen_string_literal: true\n\nrequire_relative 'ruby_gen_cli/version'\nrequire_relative 'ruby_gen_cli/engine'\nrequire_relative 'ruby_gen_cli/cli'\nrequire_relative 'ruby_gen_cli/config_manager'\nrequire_relative 'ruby_gen_cli/conversation'\nrequire_relative 'ruby_gen_cli/context_processor'\n\n# Load UI components\nrequire_relative 'ruby_gen_cli/ui'\nrequire_relative 'ruby_gen_cli/ui/console'\nrequire_relative 'ruby_gen_cli/ui/progress'\nrequire_relative 'ruby_gen_cli/ui/panels'\n\n# Load agents (commented out until implemented)\n# require_relative 'ruby_gen_cli/agents/base_agent'\n# require_relative 'ruby_gen_cli/agents/code_generator'\n# require_relative 'ruby_gen_cli/agents/chat_assistant'\n\n# Load tools (commented out until implemented)\n# require_relative 'ruby_gen_cli/tools/file_operations'\n# require_relative 'ruby_gen_cli/tools/project_analyzer'\n# require_relative 'ruby_gen_cli/tools/code_analysis'\n\n# Main module for Ruby Gen CLI\nmodule RubyGenCli\n  class Error < StandardError; end\n  class ConfigurationError < Error; end\n  class AgentError < Error; end\n  class ToolError < Error; end\n\n  # Default configuration\n  DEFAULT_CONFIG = {\n    default_llm: 'SiliconFlow',\n    temperature: 0.7,\n    max_tokens: 4000,\n    streaming: true,\n    theme: 'default',\n    log_level: 'info'\n  }.freeze\n\n  class << self\n    attr_accessor :config\n\n    # Initialize the CLI system\n    def configure\n      @config = DEFAULT_CONFIG.dup\n      yield(@config) if block_given?\n      @config.freeze\n    end\n\n    # Get current configuration\n    def configuration\n      @config ||= DEFAULT_CONFIG\n    end\n\n    # Reset configuration to defaults\n    def reset_configuration!\n      @config = DEFAULT_CONFIG.dup\n    end\n  end\nend\n```\n\nProvide comprehensive analysis covering code quality, architecture, performance, and security."}], :temperature=>0.5}
+E, [2025-07-08T23:12:32.828527 #3006] ERROR -- : Unexpected error during OpenAI request: the server responded with status 500 for POST https://api.siliconflow.cn/v1/chat/completions
+I, [2025-07-08T23:12:32.828598 #3006]  INFO -- : Successful send a message
+I, [2025-07-08T23:12:32.828626 #3006]  INFO -- : Worker code_analyzer executed successfully
+I, [2025-07-08T23:12:32.828643 #3006]  INFO -- : Worker result is: Failed to call LLM after 3 attempts: Unexpected error during OpenAI request: the server responded with status 500 for POST https://api.siliconflow.cn/v1/chat/completions

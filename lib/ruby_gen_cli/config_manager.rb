@@ -26,6 +26,7 @@ module RubyGenCli
       load_user_config
       load_llm_config
       merge_with_defaults
+      validate_config!
     end
 
     # Save current configuration
@@ -114,6 +115,56 @@ module RubyGenCli
 
     def save_llm_config!
       File.write(llm_config_file_path, @llm_config.to_yaml)
+    end
+    
+    def validate_config!
+      # Check if we have at least one LLM configured
+      llms = @llm_config['llms'] || {}
+      if llms.empty?
+        warn "Warning: No LLMs configured. Please configure at least one LLM provider."
+        return false
+      end
+      
+      default_llm_name = @llm_config['default_llm']
+      if default_llm_name.nil? || !llms.key?(default_llm_name)
+        warn "Warning: Default LLM '#{default_llm_name}' not found. Using first available LLM."
+        @llm_config['default_llm'] = llms.keys.first
+      end
+      
+      # Validate each LLM configuration
+      llms.each do |name, llm_config|
+        if llm_config['adapter'].nil?
+          warn "Warning: LLM '#{name}' missing adapter configuration"
+          next
+        end
+        
+        if llm_config['url'].nil?
+          warn "Warning: LLM '#{name}' missing URL configuration"
+          next
+        end
+        
+        # Check API key availability
+        api_key = resolve_api_key(llm_config['api_key'])
+        if name != 'ollama' && (api_key.nil? || api_key.empty? || api_key == 'test_key')
+          warn "Warning: LLM '#{name}' has no valid API key. API calls will fail unless you set the required environment variable."
+        end
+      end
+      
+      true
+    end
+    
+    def resolve_api_key(key_pattern)
+      return nil if key_pattern.nil?
+      
+      # Handle environment variable patterns like "ENV['VAR_NAME']"
+      if key_pattern.match?(/ENV\["(\w+)"\]/)
+        env_var = key_pattern.match(/ENV\["(\w+)"\]/)[1]
+        value = ENV[env_var]
+        return value unless value.nil? || value.empty?
+      end
+      
+      # Return the pattern as-is if it doesn't match expected format
+      key_pattern
     end
 
     def default_user_config

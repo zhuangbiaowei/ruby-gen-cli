@@ -1,0 +1,14 @@
+adapters:
+  openai: OpenAIAdapter
+
+llms:
+  siliconflow:
+    adapter: openai
+    url: https://api.siliconflow.cn/v1
+    api_key: "${SILICONFLOW_API_KEY}"
+    default_model: Qwen/Qwen2.5-7B-Instruct
+
+default_llm: siliconflow
+template_path: "./templates"
+worker_path: "./workers"
+logger_file: "./logs/ruby_gen_cli.log"

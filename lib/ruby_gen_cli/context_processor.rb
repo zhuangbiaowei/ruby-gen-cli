@@ -138,7 +138,7 @@ module RubyGenCli
       @project_info = analyze_project
     end
 
-    # Get summary for AI context
+    # Get summary for AI context  
     def get_summary
       summary = "Project: #{@project_info[:name]} (#{@project_info[:type]})\n"
       summary += "Location: #{@current_directory}\n"
@@ -156,6 +156,53 @@ module RubyGenCli
       end
       
       summary
+    end
+    
+    # Analyze files by type/extension
+    def analyze_files_by_type(extension)
+      pattern = "**/*#{extension}"
+      Dir.glob(File.join(@current_directory, pattern)).select { |f| File.file?(f) }
+    end
+    
+    # Analyze file content and return statistics
+    def analyze_file_content(content)
+      lines = content.lines
+      {
+        lines: lines.count,
+        characters: content.length,
+        words: content.split(/\s+/).count,
+        functions: content.scan(/def\s+\w+/).count, # Ruby functions
+        classes: content.scan(/class\s+\w+/).count  # Ruby classes
+      }
+    end
+    
+    # Get project structure as nested hash
+    def project_structure
+      structure = {
+        directories: [],
+        files_by_type: {}
+      }
+      
+      # Get top-level directories
+      Dir.glob(File.join(@current_directory, '*')).each do |path|
+        if File.directory?(path) && !should_ignore_file?(path)
+          structure[:directories] << File.basename(path)
+        end
+      end
+      
+      # Group files by extension
+      Dir.glob(File.join(@current_directory, '**', '*')).each do |file|
+        next unless File.file?(file)
+        next if should_ignore_file?(file)
+        
+        ext = File.extname(file).downcase
+        ext = 'no_extension' if ext.empty?
+        
+        structure[:files_by_type][ext] ||= 0
+        structure[:files_by_type][ext] += 1
+      end
+      
+      structure
     end
 
     private

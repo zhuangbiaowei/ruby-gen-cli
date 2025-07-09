@@ -236,6 +236,21 @@ module RubyGenCli
         puts("📊 Results: #{passed_categories}/#{total_categories} test categories passed")
       end
 
+      # Simple progress methods that don't require configuration
+      def start(message)
+        puts("⏳ #{message}...")
+      end
+      
+      def update(percentage, message = nil)
+        status = "[#{percentage}%]"
+        status += " #{message}" if message
+        puts("📈 #{status}")
+      end
+      
+      def complete(message = "Done")
+        puts("✅ #{message}")
+      end
+
       private
 
       def print(text)

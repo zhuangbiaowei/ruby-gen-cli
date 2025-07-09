@@ -5,7 +5,7 @@
 
 SmartPrompt.define_worker :code_generator do
   # Use the default LLM from configuration
-  use 'SiliconFlow'
+  use 'siliconflow'
   
   # Set temperature for code generation (lower for more deterministic output)
   temperature params[:temperature] || 0.3
@@ -39,7 +39,7 @@ end
 # Code analysis worker
 SmartPrompt.define_worker :code_analyzer do
   # Use the default LLM from configuration
-  use 'SiliconFlow'
+  use 'siliconflow'
   
   # Set temperature for analysis (balanced for detailed insights)
   temperature params[:temperature] || 0.5

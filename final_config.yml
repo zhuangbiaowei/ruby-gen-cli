@@ -1,0 +1,14 @@
+adapters:
+  openai: OpenAIAdapter
+
+llms:
+  siliconflow:
+    adapter: openai
+    url: https://api.siliconflow.cn/v1
+    api_key: "${SILICONFLOW_API_KEY}"
+    default_model: deepseek-ai/DeepSeek-V2.5
+
+default_llm: siliconflow
+template_path: "/home/runner/app/templates"
+worker_path: "/home/runner/app/workers"
+logger_file: "/home/runner/app/logs/ruby_gen_cli.log"

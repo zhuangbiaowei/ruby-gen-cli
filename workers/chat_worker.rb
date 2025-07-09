@@ -5,7 +5,7 @@
 
 SmartPrompt.define_worker :chat do
   # Use the default LLM from configuration
-  use 'SiliconFlow'
+  use 'siliconflow'
   
   # Set temperature for conversational responses
   temperature params[:temperature] || 0.7
